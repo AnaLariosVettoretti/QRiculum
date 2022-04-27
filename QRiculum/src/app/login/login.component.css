@@ -1,0 +1,9 @@
+.login{
+    margin: auto;
+    margin-top: 2em;
+    padding:3em;
+    text-align: center;
+    background-color: lightgrey;
+    height: 60%;
+    width: 40%;
+}
