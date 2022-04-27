@@ -1,0 +1,13 @@
+.footer{
+    background-color: teal;
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+p{
+    padding: 20px;
+}

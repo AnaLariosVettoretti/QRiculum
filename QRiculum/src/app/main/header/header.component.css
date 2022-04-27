@@ -1,4 +1,19 @@
-/* .header{
+*{
+    text-decoration: none;
+}
+
+.header{
     background-color: teal;
-    height: 15%;
-} */
+    height: 10%;
+    text-align: center;
+    padding: 20px;
+}
+
+h1{
+    color: white;
+}
+
+a{
+    color: white;
+    margin: 10px;
+}
