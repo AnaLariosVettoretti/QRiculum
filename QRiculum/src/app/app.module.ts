@@ -17,18 +17,20 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { HeaderComponent } from './main/header/header.component';
 import { FooterComponent } from './main/footer/footer.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     LoginComponent,
     RegistroComponent,
     HeaderComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+      UsuarioComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

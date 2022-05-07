@@ -31,3 +31,11 @@
   font-size: unset;
   height: 3.5rem;
 }
+
+nav{
+    opacity: 95%;
+}
+
+button{
+  margin-left: 10px;
+}

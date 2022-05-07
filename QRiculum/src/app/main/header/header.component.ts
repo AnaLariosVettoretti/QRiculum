@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() nombreUsuario: string | undefined;
+
+  constructor(private router: Router) { }
+
+  btnLogin = () => {
+    this.router.navigateByUrl('/login');
+  };
+
+  btnRegistro = () => {
+    this.router.navigateByUrl('/registro');
+  };
 
   ngOnInit() {
   }
