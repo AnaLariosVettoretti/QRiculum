@@ -11,6 +11,7 @@ export class UsuarioComponent implements OnInit {
   @Input() nombre: string | undefined;
   @Input() apellido1: string | undefined;
   @Input() apellido2: string | undefined;
+  @Input() email: string | undefined;
   constructor() { }
 
   ngOnInit() {

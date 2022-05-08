@@ -18,18 +18,21 @@ import {MatButtonModule} from '@angular/material/button';
 import { HeaderComponent } from './main/header/header.component';
 import { FooterComponent } from './main/footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { EditarCVComponent } from './editarCV/editarCV.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     LoginComponent,
     RegistroComponent,
     HeaderComponent,
     FooterComponent,
-      UsuarioComponent
+      UsuarioComponent,
+      EditarCVComponent
    ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatDatepickerModule,
   ],
 
   providers: [],
