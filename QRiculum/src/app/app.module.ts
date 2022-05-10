@@ -20,19 +20,21 @@ import { FooterComponent } from './main/footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { EditarCVComponent } from './editarCV/editarCV.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CvComponent } from './cv/cv.component';
 
 
 
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     LoginComponent,
     RegistroComponent,
     HeaderComponent,
     FooterComponent,
       UsuarioComponent,
-      EditarCVComponent
+      EditarCVComponent,
+      CvComponent
    ],
   imports: [
     BrowserModule,

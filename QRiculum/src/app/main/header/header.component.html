@@ -16,17 +16,17 @@
     <a class="navbar-brand" href="#"><img src="../../../assets/logo.png" alt="logo" id="logo" height="100%"></a>
     <!-- Search form -->
     <form class="input-group" style="width: 400px">
-      <input type="search" class="form-control" placeholder="Introduce el nombre" aria-label="Search" />
+      <input type="search" class="form-control" placeholder="Introduce un nombre" aria-label="Search" />
       <button class="btn btn-outline-secondary" type="button" data-mdb-ripple-color="dark"
         style="padding: .45rem 1.5rem .35rem;">
-        Buscar
+        <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <mat-icon>book</mat-icon>
+      <i class="fa-solid fa-bars"></i>
     </button>
 
     <!-- Collapsible wrapper -->
@@ -42,24 +42,24 @@
               class="fas fa-user-friends fa-lg"></i><span class="small">Editar mi CV</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['CV']"><i
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['cv']"><i
               class="fas fa-briefcase fa-lg"></i><span class="small">Ver mi CV</span></a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']"><i
-            class="fas fa-briefcase fa-lg"></i><span class="small">Bienvenid@ {{nombreUsuario}} Juan</span></a>
+        
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item mt-1 ml-5">
+          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']"><span class="small">Bienvenid@ {{nombreUsuario}} Juan</span></a>
         </li>
         
         <li class="nav-item dropdown">
             <!-- Aqui iria el avatar -->
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle" height="30"
-              alt="" loading="lazy" />
-          
+            <img src="../../../assets/profile.png" class="rounded-circle mt-1" height="30"
+              alt="" loading="lazy" />         
 
         </li>
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item mr-3">
           
           <button mat-raised-button color="primary" (click)="btnLogin();">Acceder</button>
