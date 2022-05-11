@@ -1,9 +1,27 @@
 .main{
     margin-top: 100px;
-    height: 70%;
+    
+}
+
+.header{
+    height: 100%;
 }
 
 body{
     background: url(../assets/fondo.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100vh;
 }
+
+
+/* Trick */
+.page{ 
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+  
+  .footer{
+    margin-top:auto; 
+  }
