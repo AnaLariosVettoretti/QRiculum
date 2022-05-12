@@ -5,32 +5,50 @@
   <form action="">
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Usuario</mat-label>
-      <input matInput value="{{usuario}} JuanPerez95">
+      <input matInput value={{user.usuario}}>
       <mat-icon matSuffix>alternate_email</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Nombre</mat-label>
-      <input matInput value="{{nombre}} Juan">
+      <input matInput value={{user.nombre}}>
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Primer apellido</mat-label>
-      <input matInput value="{{apellido1}} Pérez">
+      <input matInput value={{user.apellido1}}>
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Segundo apellido</mat-label>
-      <input matInput value="{{apellido2}} García">
+      <input matInput value={{user.apellido2}}>
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Email</mat-label>
-      <input matInput value="{{email}}" type="email">
+      <input matInput value={{user.email}}>
       <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-7">
+      <mat-label>Teléfono 1</mat-label>
+      <input matInput value={{user.telefono1}}>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-7">
+      <mat-label>Teléfono 2</mat-label>
+      <input matInput value={{user.telefono2}}>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-7">
+      <mat-label>Ciudad</mat-label>
+      <input matInput value={{user.ciudad}}>
+      <mat-icon matSuffix>gps_fixed</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
