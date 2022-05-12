@@ -16,7 +16,7 @@
     <ng-container *ngFor="let formacion of user.cv.educacion;index as i">
 
       <div class="tarjeta p-2 mb-3 mt-2">
-        <h5 class="mt-3">Formación {{i+1}} <button class="btn btn-danger ml-5"><i
+        <h5 class="mt-3">Formación {{i+1}} <button class="btn btn-danger m-3"><i
               class="fa-solid fa-trash"></i></button></h5>
 
         <mat-form-field appearance="outline" class="col-5">
@@ -57,7 +57,7 @@
     <ng-container *ngFor="let experiencia of user.cv.expLaboral; index as i">
       <div class="tarjeta p-2 mb-3 mt-2">
 
-        <h5 class="mt-3">Experiencia {{i+1}} <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+        <h5 class="mt-3">Experiencia {{i+1}} <button class="btn btn-danger m-3"><i class="fa-solid fa-trash"></i></button>
         </h5>
 
         <mat-form-field appearance="outline" class="col-5">
@@ -106,7 +106,7 @@
       
 
       <div class="tarjeta p-2 mb-3 mt-2">
-        <h5 class="mt-3">Idioma 1 <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></h5>
+        <h5 class="mt-3">Idioma {{i+1}} <button class="btn btn-danger m-3"><i class="fa-solid fa-trash"></i></button></h5>
 
         <mat-form-field appearance="outline" class="col-5">
           <mat-label>Idioma</mat-label>
@@ -144,6 +144,42 @@
     <button mat-raised-button color="primary" class="col-7 mt-3 mb-3">+</button>
 
   </div>
+
+  <hr>
+
+  <div class="certificados">
+
+    <h4 class="mt-5">Cerficados</h4>
+
+    <ng-container *ngFor="let certificado of user.cv.certificados; index as i">
+
+      <div class="tarjeta p-2 mb-3 mt-2">
+        <h5 class="mt-3">Certificado {{i+1}}<button class="btn btn-danger m-3"><i class="fa-solid fa-trash"></i></button></h5>
+
+        <mat-form-field appearance="outline" class="col-8 m-3">
+          <mat-label>Certificado</mat-label>
+          <input matInput placeholder="Ej. Professional Cloud Architect" value={{certificado.certificado}}> 
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="col-4 m-3">
+          <mat-label>Expedición</mat-label>
+          <input matInput placeholder="Ej. Google" value={{certificado.expedicion}}> 
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="col-4">
+          <mat-label>Fecha de expedición</mat-label>
+          <input matInput type="date" value={{certificado.fecha}}> 
+        </mat-form-field>
+  
+      </div>
+      
+      
+    </ng-container>   
+
+
+  </div>
+
+  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3">+</button>
 
   <hr>
 
