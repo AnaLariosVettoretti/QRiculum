@@ -2,52 +2,51 @@
 
   <h3 class="mb-3">Editar mis datos</h3>
 
-  <form action="">
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Usuario</mat-label>
-      <input matInput value={{user.usuario}}>
+      <input matInput placeholder="Nombre" [(ngModel)]="user.usuario">
       <mat-icon matSuffix>alternate_email</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Nombre</mat-label>
-      <input matInput value={{user.nombre}}>
+      <input matInput [(ngModel)]="user.nombre">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Primer apellido</mat-label>
-      <input matInput value={{user.apellido1}}>
+      <input matInput [(ngModel)]="user.apellido1">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Segundo apellido</mat-label>
-      <input matInput value={{user.apellido2}}>
+      <input matInput [(ngModel)]="user.apellido2">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Email</mat-label>
-      <input matInput value={{user.email}}>
+      <input matInput [(ngModel)]="user.email">
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Teléfono 1</mat-label>
-      <input matInput value={{user.telefono1}}>
+      <input matInput [(ngModel)]="user.telefono1">
       <mat-icon matSuffix>phone</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Teléfono 2</mat-label>
-      <input matInput value={{user.telefono2}}>
+      <input matInput [(ngModel)]="user.telefono2">
       <mat-icon matSuffix>phone</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="col-7">
       <mat-label>Ciudad</mat-label>
-      <input matInput value={{user.ciudad}}>
+      <input matInput [(ngModel)]="user.ciudad">
       <mat-icon matSuffix>gps_fixed</mat-icon>
     </mat-form-field>
   
@@ -64,7 +63,5 @@
     </mat-form-field>
   
     <button mat-raised-button color="primary" class="col-7 mt-3 p-1" type="submit">Modificar cambios</button>
-  
-  </form>
   
 </div>

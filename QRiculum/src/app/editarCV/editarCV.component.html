@@ -5,7 +5,7 @@
   <div class="sobreMi">
     <mat-form-field appearance="outline" class="col-10">
       <mat-label>Sobre mí</mat-label>
-      <textarea matInput value={{user.cv.sobreMi}}></textarea>
+      <textarea matInput [(ngModel)]="user.cv.sobreMi"></textarea>
     </mat-form-field>
   </div>
   <hr>
@@ -21,28 +21,28 @@
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Institución</mat-label>
-          <input matInput placeholder="Ej. IES Albarregas" value={{formacion.institucion}}>
+          <input matInput placeholder="Ej. IES Albarregas" [(ngModel)]="formacion.institucion">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Denominación</mat-label>
           <input matInput placeholder="Ej. Grado superior de desarrollo de aplicaciones web"
-            value={{formacion.denominacion}}>
+          [(ngModel)]="formacion.denominacion">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-3 m-1">
           <mat-label>Nota</mat-label>
-          <input matInput type="number" value={{formacion.nota}}>
+          <input matInput type="number" [(ngModel)]="formacion.nota">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-3 m-1">
           <mat-label>Fecha de inicio</mat-label>
-          <input matInput type="date" value={{formacion.fIni}}>
+          <input matInput type="date" [(ngModel)]="formacion.fIni">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-3 m-1">
           <mat-label>Fecha de finalización</mat-label>
-          <input matInput type="date" value={{formacion.fFin}}>
+          <input matInput type="date" [(ngModel)]="formacion.fFin">
         </mat-form-field>
 
 
@@ -67,27 +67,27 @@
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Empresa</mat-label>
-          <input matInput placeholder="Ej. Accenture" value={{experiencia.empresa}} >
+          <input matInput placeholder="Ej. Accenture"  [(ngModel)]='experiencia.empresa' >
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Puesto</mat-label>
-          <input matInput placeholder="Ej. Desarrollador junior Java" value={{experiencia.cargo}}>
+          <input matInput placeholder="Ej. Desarrollador junior Java" [(ngModel)]="experiencia.cargo">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-10">
           <mat-label>Descripción de funciones</mat-label>
-          <input matInput placeholder="Ej. Desarrollo de aplicación web" value={{experiencia.descripcion}}>
+          <input matInput placeholder="Ej. Desarrollo de aplicación web" [(ngModel)]="experiencia.descripcion">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Fecha de inicio</mat-label>
-          <input matInput type="date" value={{experiencia.fIni}}>
+          <input matInput type="date" [(ngModel)]="experiencia.fIni">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Fecha de finalización</mat-label>
-          <input matInput type="date" value={{experiencia.fFin}}>
+          <input matInput type="date" [(ngModel)]="experiencia.fFin">
         </mat-form-field>
 
 
@@ -115,12 +115,12 @@
 
         <mat-form-field appearance="outline" class="col-5 m-1">
           <mat-label>Idioma</mat-label>
-          <input matInput placeholder="Ej. Inglés" value={{idioma.idioma}}>
+          <input matInput placeholder="Ej. Inglés" [(ngModel)]="idioma.idioma">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="m-1">
           <mat-label>Nivel</mat-label>
-          <mat-select value={{idioma.nivel}}>
+          <mat-select [(ngModel)]="idioma.nivel">
             <mat-option>
               A1
             </mat-option>
@@ -163,17 +163,17 @@
 
         <mat-form-field appearance="outline" class="col-8 m-3">
           <mat-label>Certificado</mat-label>
-          <input matInput placeholder="Ej. Professional Cloud Architect" value={{certificado.certificado}}> 
+          <input matInput placeholder="Ej. Professional Cloud Architect" [(ngModel)]="certificado.certificado"> 
         </mat-form-field>
         
         <mat-form-field appearance="outline" class="col-4 m-3">
           <mat-label>Expedición</mat-label>
-          <input matInput placeholder="Ej. Google" value={{certificado.expedicion}}> 
+          <input matInput placeholder="Ej. Google" [(ngModel)]="certificado.expedicion"> 
         </mat-form-field>
   
         <mat-form-field appearance="outline" class="col-4">
           <mat-label>Fecha de expedición</mat-label>
-          <input matInput type="date" value={{certificado.fecha}}> 
+          <input matInput type="date" [(ngModel)]="certificado.fecha"> 
         </mat-form-field>
   
       </div>
@@ -195,7 +195,7 @@
     <ng-container *ngFor="let conocimiento of user.cv.conocimientos">
       <mat-form-field appearance="outline" class="col-8 m-3">
         <mat-label>Conocimiento</mat-label>
-        <input matInput placeholder="Ej. Angular, MySQL..." value={{conocimiento.conocimiento}}> 
+        <input matInput placeholder="Ej. Angular, MySQL..." [(ngModel)]="conocimiento.conocimiento"> 
       </mat-form-field>
       <button class="btn btn-danger ml-2"><i class="fa-solid fa-trash"></i></button>
     </ng-container>   
