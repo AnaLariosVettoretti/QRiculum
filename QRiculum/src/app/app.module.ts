@@ -21,6 +21,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { EditarCVComponent } from './editarCV/editarCV.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CvComponent } from './cv/cv.component';
+import { ServicioUsuariosService } from './servicio-usuarios.service';
 
 
 
@@ -53,7 +54,7 @@ import { CvComponent } from './cv/cv.component';
     FormsModule,
   ],
 
-  providers: [],
+  providers: [ServicioUsuariosService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
