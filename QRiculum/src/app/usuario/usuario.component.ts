@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
   selector: 'app-usuario',
@@ -12,9 +13,12 @@ export class UsuarioComponent implements OnInit {
   @Input() apellido1: string | undefined;
   @Input() apellido2: string | undefined;
   @Input() email: string | undefined;
-  constructor() { }
 
-  user = {
+  constructor(private miServicio: ServicioUsuariosService) { }
+
+  user : any;
+
+  /* user = {
     usuario: 'JuanPerez95',
     nombre: 'Juan',
     apellido1: 'Pérez',
@@ -24,9 +28,19 @@ export class UsuarioComponent implements OnInit {
     telefono1: '678453275',
     telefono2: '643652785',
     ciudad: 'Madrid'  
-  }
+  } */
 
   ngOnInit() {
+
+    const user = this.miServicio.obtenerDatos();
+
+    this.user = user;
+    
+  }
+
+  guardarCambios(){
+    this.miServicio.muestraMensaje('Se han actualizado los datos correctamente')
+    console.log(this.user);
   }
 
 }
