@@ -18,28 +18,15 @@ export class UsuarioComponent implements OnInit {
 
   user : any;
 
-  /* user = {
-    usuario: 'JuanPerez95',
-    nombre: 'Juan',
-    apellido1: 'Pérez',
-    apellido2: 'García',
-    email: 'jupergar@gmail.com',
-    contraseña: '123456',
-    telefono1: '678453275',
-    telefono2: '643652785',
-    ciudad: 'Madrid'  
-  } */
-
   ngOnInit() {
 
-    const user = this.miServicio.obtenerDatos();
+    const user = this.miServicio.obtenerDatosUsuario();
 
     this.user = user;
     
   }
 
   guardarCambios(){
-    this.miServicio.muestraMensaje('Se han actualizado los datos correctamente')
     console.log(this.user);
   }
 
