@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
+
+  username: string = '';
+  contrasenia: string = '';
 
   btnAcceder = () => {
+
+    this.miServicio.login(this.username, this.contrasenia);
+
     this.router.navigateByUrl('/usuario');
   };
 
