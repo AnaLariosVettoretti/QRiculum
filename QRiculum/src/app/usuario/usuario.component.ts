@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
@@ -14,19 +15,25 @@ export class UsuarioComponent implements OnInit {
   @Input() apellido2: string | undefined;
   @Input() email: string | undefined;
 
-  constructor(private miServicio: ServicioUsuariosService) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
-  user : any;
+  user: any;
 
   ngOnInit() {
 
-    const user = this.miServicio.obtenerDatosUsuario();
+    const username = this.route.snapshot.queryParamMap.get('username');
+    console.log(this.user);
 
-    this.user = user;
-    
+    if (username) {
+      const user = this.miServicio.obtenerDatosUsuario(username);
+      this.user = user;
+    }
+
+
+
   }
 
-  guardarCambios(){
+  guardarCambios() {
     console.log(this.user);
   }
 

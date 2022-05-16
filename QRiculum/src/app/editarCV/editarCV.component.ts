@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
@@ -8,16 +9,25 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 })
 export class EditarCVComponent implements OnInit {
 
-  constructor(private miServicio: ServicioUsuariosService) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
   user: any;
 
 
   ngOnInit() {
-    const user = this.miServicio.obtenerCVUsuario();
 
-    this.user = user;
+    const username = this.route.snapshot.queryParamMap.get('username');
+    console.log(username);
+
+    if (username) {
+      const user = this.miServicio.obtenerCVUsuario(username);
+      this.user = user;
+    }
+
   }
 
+  guardarCambios() {
+    console.log(this.user);
+  }
 
 }
