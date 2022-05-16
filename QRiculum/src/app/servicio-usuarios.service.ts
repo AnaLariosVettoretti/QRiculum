@@ -21,8 +21,6 @@ export class ServicioUsuariosService {
       ciudad: 'Madrid'
     }
 
-    sessionStorage.setItem('login', 'true');
-
     return user;
   }
 
