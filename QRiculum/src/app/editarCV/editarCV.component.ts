@@ -17,7 +17,6 @@ export class EditarCVComponent implements OnInit {
   ngOnInit() {
 
     const username = this.route.snapshot.queryParamMap.get('username');
-    console.log(username);
 
     if (username) {
       const user = this.miServicio.obtenerCVUsuario(username);
@@ -27,7 +26,7 @@ export class EditarCVComponent implements OnInit {
   }
 
   guardarCambios() {
-    console.log(this.user);
+    /* console.log(this.user); */
   }
 
 }

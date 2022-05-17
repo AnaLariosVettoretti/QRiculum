@@ -11,13 +11,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
-  username: string = 'sdf';
-  contrasenia: string = 'fsdfsd';
+  username: string = '';
+  contrasenia: string = '';
 
   btnAcceder = () => {
 
     const user = this.miServicio.login(this.username, this.contrasenia);
 
+    sessionStorage.setItem('usuario', JSON.stringify(user));
     this.router.navigateByUrl('/usuario');
   };
 

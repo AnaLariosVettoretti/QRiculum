@@ -17,7 +17,6 @@ export class CvComponent implements OnInit {
   ngOnInit() {
 
     const username = this.route.snapshot.queryParamMap.get('username');
-    console.log(this.user);
 
     if (username) {
       const user = this.miServicio.obtenerCVUsuario(username);

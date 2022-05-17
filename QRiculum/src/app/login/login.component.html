@@ -3,7 +3,7 @@
   <h3>Accede</h3>
     <mat-form-field appearance="outline" class="col-7 mt-3">
       <mat-label>Usuario</mat-label>
-      <input matInput placeholder="Usuario"  >
+      <input matInput placeholder="Usuario" [(ngModel)]="username" >
       <mat-icon matSuffix>alternate_email</mat-icon>
       <mat-hint>Entre 5 y 20 caracteres</mat-hint>
     </mat-form-field>
@@ -11,7 +11,7 @@
 
   <mat-form-field appearance="outline" class="col-7">
     <mat-label>Contraseña</mat-label>
-    <input matInput placeholder="Contraseña" type="password" >
+    <input matInput placeholder="Contraseña" type="password" [(ngModel)]="contrasenia">
     <mat-icon matSuffix>password</mat-icon>
     <mat-hint>Entre 5 y 20 caracteres</mat-hint>
   </mat-form-field>

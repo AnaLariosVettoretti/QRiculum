@@ -1,13 +1,4 @@
-<!-- <div class="header">
-  <h1>QRiculum</h1>
-  LOGO DE LA PÁGINA
-    <img src="../../../assets/logo.png" alt="logo" id="logo">
 
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-  <a routerLink="/registro" routerLinkActive="active">Registro</a>
-
-
-</div> -->
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <!-- Container wrapper -->
@@ -34,20 +25,20 @@
       <!-- Left links -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><i
+          <a class="nav-link active d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: usuario.usuario}"><i
               class="fas fa-home fa-lg"></i><span class="small">Editar mis datos</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['editarCV']" [queryParams]="{username: 'JuanPerez95'}"><i
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['editarCV']" [queryParams]="{username: usuario.usuario}"><i
               class="fas fa-user-friends fa-lg"></i><span class="small">Editar mi CV</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['cv']" [queryParams]="{username: 'JuanPerez95'}"><i
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['cv']" [queryParams]="{username: usuario.usuario}"><i
               class="fas fa-briefcase fa-lg"></i><span class="small">Ver mi CV</span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['qr']" [queryParams]="{username: 'JuanPerez95'}"><i
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['qr']" [queryParams]="{username: usuario.usuario}"><i
               class="fa-solid fa-qrcode fa-lg"></i><span class="small">Mi QR</span></a>
         </li>
 
@@ -56,7 +47,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item mt-1 ml-5">
-          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><span class="small">Bienvenid@ {{nombreUsuario}} Juan</span></a>
+          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><span class="small">Bienvenid@ {{usuario.nombre}}</span></a>
         </li>
         
         <li class="nav-item dropdown">

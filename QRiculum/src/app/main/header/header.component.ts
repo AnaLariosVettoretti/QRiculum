@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  usuario: any;
+
   btnLogin = () => {
     this.router.navigateByUrl('/login');
   };
@@ -22,6 +24,13 @@ export class HeaderComponent implements OnInit {
   };
 
   ngOnInit() {
+
+    const user = sessionStorage.getItem('usuario');
+
+    if (user) {
+      this.usuario = JSON.parse(user);
+    }
+    
   }
 
 }

@@ -20,21 +20,18 @@ export class UsuarioComponent implements OnInit {
   user: any;
 
   ngOnInit() {
+  
+    //Obtiene de sesión el usuario
+    const usuario = sessionStorage.getItem('usuario');
 
-    const username = this.route.snapshot.queryParamMap.get('username');
-    console.log(this.user);
-
-    if (username) {
-      const user = this.miServicio.obtenerDatosUsuario(username);
-      this.user = user;
+    if (usuario) {
+      this.user = JSON.parse(usuario);
     }
-
-
-
+   
   }
 
   guardarCambios() {
-    console.log(this.user);
+    /* console.log(this.user); */
   }
 
 }
