@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CvComponent } from './cv/cv.component';
 import { EditarCVComponent } from './editarCV/editarCV.component';
 import { LoginComponent } from './login/login.component';
+import { QrComponent } from './qr/qr.component';
 import { RegistroComponent } from './registro/registro.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'usuario', component: UsuarioComponent },
   { path: 'editarCV', component: EditarCVComponent},
   { path: 'cv', component: CvComponent},
+  { path: 'qr', component: QrComponent},
+
 ];
 
 @NgModule({
