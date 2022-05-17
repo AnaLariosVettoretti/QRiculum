@@ -9,7 +9,10 @@ export class QrComponent implements OnInit {
 
   constructor() { }
 
+  enlace: string = window.location.href.replace("qr", "cv");
+
   ngOnInit() {
+    console.log(this.enlace);
   }
 
 }

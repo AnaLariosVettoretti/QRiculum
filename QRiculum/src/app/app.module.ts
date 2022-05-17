@@ -23,6 +23,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CvComponent } from './cv/cv.component';
 import { ServicioUsuariosService } from './servicio-usuarios.service';
 import { QrComponent } from './qr/qr.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 
 
@@ -54,6 +55,7 @@ import { QrComponent } from './qr/qr.component';
     MatButtonModule,
     MatDatepickerModule,
     FormsModule,
+    QRCodeModule,
   ],
 
   providers: [ServicioUsuariosService],
