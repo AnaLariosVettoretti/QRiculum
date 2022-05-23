@@ -4,7 +4,7 @@
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#"><img src="../../../assets/logo.png" alt="logo" id="logo" height="100%"></a>
+    <img src="../../../assets/logo.png" alt="logo" id="logo" height="100%" class="navbar-brand">
     <!-- Search form -->
     <form class="input-group" style="width: 400px">
       <input type="search" class="form-control" placeholder="Introduce un nombre" aria-label="Search" />
@@ -26,15 +26,15 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: usuario.usuario}"><i
-              class="fas fa-home fa-lg"></i><span class="small">Editar mis datos</span></a>
+              class="fas fa-user fa-lg"></i><span class="small">Editar datos</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['editarCV']" [queryParams]="{username: usuario.usuario}"><i
-              class="fas fa-user-friends fa-lg"></i><span class="small">Editar mi CV</span></a>
+              class="fas fa-briefcase fa-lg"></i><span class="small">Editar CV</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['cv']" [queryParams]="{username: usuario.usuario}"><i
-              class="fas fa-briefcase fa-lg"></i><span class="small">Ver mi CV</span></a>
+              class="fa-solid fa-file fa-lg"></i><span class="small">Ver CV</span></a>
         </li>
 
         <li class="nav-item">
@@ -42,28 +42,31 @@
               class="fa-solid fa-qrcode fa-lg"></i><span class="small">Mi QR</span></a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" routerLinkActive="active" [routerLink]="['']" (click)="btnSalir()"><i
+              class="fa-solid fa-arrow-right-from-bracket fa-lg"></i><span class="small">Cerrar sesión</span></a>
+        </li>
         
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item mt-1 ml-5">
-          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><span class="small">Bienvenid@ {{usuario.nombre}}</span></a>
-        </li>
-        
-        <li class="nav-item dropdown">
+          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><span class="small">Bienvenid@ {{usuario.nombre}} 
             <!-- Aqui iria el avatar -->
-            <img src="../../../assets/profile.png" class="rounded-circle mt-1" height="30"
-              alt="" loading="lazy" />         
-
+            <img src="../../../assets/profile.png" class="rounded-circle" height="30"
+              alt="" loading="lazy" /></span></a>
         </li>
-        <li class="nav-item mr-3">
+
+
+        
+      <!--   <li class="nav-item mr-3">
           
           <button mat-raised-button color="primary" (click)="btnLogin()">Acceder</button>
         </li>
         <li class="nav-item mr-3">
 
           <button mat-raised-button color="primary" (click)="btnRegistro()">Registro</button>
-        </li>
+        </li> -->
 
       </ul>
       <!-- Left links -->

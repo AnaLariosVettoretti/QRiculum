@@ -15,13 +15,11 @@ export class HeaderComponent implements OnInit {
 
   usuario: any;
 
-  btnLogin = () => {
-    this.router.navigateByUrl('/login');
+  btnSalir = () => {
+    this.router.navigateByUrl('/landing');
+    sessionStorage.clear();
   };
 
-  btnRegistro = () => {
-    this.router.navigateByUrl('/registro');
-  };
 
   ngOnInit() {
 
