@@ -24,4 +24,8 @@ export class CvComponent implements OnInit {
     }
   }
 
+  scroll(el: HTMLElement){
+    el.scrollIntoView({behavior: 'smooth'});
+  }
+
 }
