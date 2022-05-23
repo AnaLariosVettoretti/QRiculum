@@ -24,12 +24,13 @@ import { CvComponent } from './cv/cv.component';
 import { ServicioUsuariosService } from './servicio-usuarios.service';
 import { QrComponent } from './qr/qr.component';
 import { QRCodeModule } from 'angular2-qrcode';
+import { LandingComponent } from './landing/landing.component';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     LoginComponent,
     RegistroComponent,
@@ -38,8 +39,9 @@ import { QRCodeModule } from 'angular2-qrcode';
     UsuarioComponent,
     EditarCVComponent,
     CvComponent,
-    QrComponent
-  ],
+    QrComponent,
+      LandingComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
