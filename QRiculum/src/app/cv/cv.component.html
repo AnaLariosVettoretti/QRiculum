@@ -12,9 +12,9 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(about)">Sobre mí</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger"  (click)="scroll(experience)">Experiencia</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(experience)">Experiencia</a></li>
         <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(education)">Formación</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(skills)">Idiomas</a></li>        
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(skills)">Idiomas</a></li>
         <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(awards)">Habilidades</a></li>
         <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(interests)">Certificados</a></li>
       </ul>
@@ -40,9 +40,9 @@
 
             <ng-container *ngIf="red.red == 'linkedin'">
               <a class="social-icon" href="https://www.linkedin.com/in/{{red.usuario}}/"><i
-                class="fab fa-linkedin-in"></i></a>
+                  class="fab fa-linkedin-in"></i></a>
             </ng-container>
-  
+
             <ng-container *ngIf="red.red == 'github'">
               <a class="social-icon" href="https://www.github.com/{{red.usuario}}"><i class="fab fa-github"></i></a>
             </ng-container>
@@ -52,7 +52,8 @@
             </ng-container>
 
             <ng-container *ngIf="red.red == 'instagram'">
-              <a class="social-icon" href="https://www.instagram.com/{{red.usuario}}"><i class="fab fa-instagram"></i></a>
+              <a class="social-icon" href="https://www.instagram.com/{{red.usuario}}"><i
+                  class="fab fa-instagram"></i></a>
             </ng-container>
 
           </ng-container>
@@ -73,10 +74,11 @@
             <div class="subheading mb-3">{{experiencia.empresa}}</div>
             <p>{{experiencia.descripcion}}</p>
           </div>
-          <div class="flex-shrink-0"><span class="text-secondary">{{experiencia.fIni}} -  {{experiencia.fFin}}</span></div>
+          <div class="flex-shrink-0"><span class="text-secondary">{{experiencia.fIni}} - {{experiencia.fFin}}</span>
+          </div>
 
         </ng-container>
-        
+
       </div>
     </section>
     <hr class="m-0" />
@@ -84,7 +86,7 @@
     <section class="resume-section" id="education" #education>
       <div class="resume-section-content">
         <h2 class="mb-5">Formación</h2>
-        
+
         <ng-container *ngFor="let educacion of user.cv.educacion">
           <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
             <div class="flex-grow-1">
@@ -105,19 +107,19 @@
       <div class="resume-section-content">
         <h2 class="mb-5">Idiomas</h2>
         <ng-container *ngFor="let idioma of user.cv.idiomas">
-           <hr> 
+          <hr>
           <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
             <div class="flex-grow-1">
               <h3 class="mb-0">{{idioma.idioma}}</h3>
-              <div class="subheading mb-3">{{idioma.nivel}}</div>              
+              <div class="subheading mb-3">{{idioma.nivel}}</div>
             </div>
             <div class="flex-shrink-0"><span class="text-secondary">{{idioma.certificado}}</span></div>
           </div>
-          
-          
-        </ng-container> 
+
+
+        </ng-container>
         <hr>
-        
+
       </div>
     </section>
     <hr class="m-0" />
@@ -127,16 +129,17 @@
         <h2 class="mb-5">Premios y certificados</h2>
         <ul class="fa-ul mb-0">
           <ng-container *ngFor="let certificado of user.cv.certificados">
-            <li>             
-              <div class="subheading mb-3"><i class="fas fa-trophy text-warning"></i> {{certificado.certificado}} · {{certificado.expedicion}}</div>
+            <li>
+              <div class="subheading mb-3"><i class="fas fa-trophy text-warning"></i> {{certificado.certificado}} ·
+                {{certificado.expedicion}}</div>
             </li>
           </ng-container>
-         
-          
+
+
         </ul>
       </div>
     </section>
-    
+
     <hr class="m-0" />
     <!-- Habilities-->
     <section class="resume-section" id="interests" #interests>
