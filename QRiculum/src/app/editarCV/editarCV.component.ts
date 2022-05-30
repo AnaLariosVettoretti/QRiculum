@@ -25,7 +25,7 @@ export class EditarCVComponent implements OnInit {
 
 
     if (username) {
-      const user = this.miServicio.obtenerCVUsuario(username);
+      const user = this.miServicio.obtenerCVUsuario(username);      
       this.user = user;
       console.log('entras?', this.user)
     }
