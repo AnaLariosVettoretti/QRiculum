@@ -101,7 +101,7 @@ export class ServicioUsuariosService {
           { conocimiento: 'Angular 13' },
           { conocimiento: 'TypeScript' },
           { conocimiento: 'MySQL' },
-          { conocimiento: 'MongoDB' },
+          { conocimiento: 'MongoDB' }
         ],
         certificados: [
           {
@@ -131,7 +131,7 @@ export class ServicioUsuariosService {
           {
             red: 'instagram',
             usuario: 'juanperezgarcia95'
-          },
+          }
         ]
       }
     }

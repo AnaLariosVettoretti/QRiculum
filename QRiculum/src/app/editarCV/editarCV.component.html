@@ -2,20 +2,29 @@
 
   <h3 class="mt-4 mb-4">Datos de mi CV</h3>
 
-  <form action="" [formGroup]="datosCV">
+  <form (ngSubmit)="onSubmit()" [formGroup]="datosCV">
 
-    <div class="sobreMi">
+    <!-- <div class="sobreMi">
       <mat-form-field appearance="outline" class="col-10">
         <mat-label>Sobre mí</mat-label>
         <textarea matInput formControlName="sobreMi"></textarea>
       </mat-form-field>
+    </div> -->
+
+    <div class="sobreMi" *ngFor="let data of formData">
+      <mat-form-field appearance="outline" class="col-10">
+        <mat-label>{{data.label}}</mat-label>
+        <textarea matInput formControlName="{{data.label}}"></textarea>
+      </mat-form-field>
     </div>
+
+
     <hr>
-    <div class="estudios" >
+    <div class="estudios">
 
       <h4 class="mt-5 mb-3">Formación</h4>
 
-      <ng-container formArrayName="formacion" *ngFor="let formacion of formacion.controls; index as i">
+      <!-- <ng-container formArrayName="formacion" *ngFor="let formacion of datosCV.formacion; index as i">
 
         <div class="tarjeta p-2 mb-3 mt-2">
           <h5 class="mt-3">Formación {{i+1}} <button class="btn btn-danger m-3"><i
@@ -50,9 +59,11 @@
 
 
         </div>
-      </ng-container>
-      <button mat-raised-button color="primary" class="col-7 mt-3 mb-3">Añadir formación</button>
+      </ng-container> -->
+      <button mat-raised-button color="primary" class="col-7 mt-3 mb-3" (click)="nuevaFormacion()">Añadir
+        formación</button>
 
+  <!-- 
       <hr>
 
     </div>
@@ -210,9 +221,9 @@
 
     <button mat-raised-button color="primary" class="col-7 mt-3 mb-3">Añadir conocimiento</button>
 
-    <hr>
+    <hr> -->
 
-    <button mat-raised-button color="primary" class="col-12 mt-5" (click)="guardarCambios()">Subir mi CV</button>
-  </form>
+  <!--  <button mat-raised-button color="primary" class="col-12 mt-5" (click)="guardarCambios()">Subir mi CV</button>
+  </form> -->
 
 </div>

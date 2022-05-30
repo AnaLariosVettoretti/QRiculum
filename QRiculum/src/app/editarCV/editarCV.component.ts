@@ -11,7 +11,9 @@ import { FormGroup, FormControl, FormBuilder, FormArray } from "@angular/forms";
 export class EditarCVComponent implements OnInit {
 
   user: any;
-  datosCV: any;
+  datosCV: FormGroup;
+  formData;
+  
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
@@ -21,12 +23,25 @@ export class EditarCVComponent implements OnInit {
     const username = this.route.snapshot.queryParamMap.get('username');
 
     if (username) {
-      const user = this.miServicio.obtenerCVUsuario(username);
+      const user = this.miServicio.obtenerCVUsuario(username);      
       this.user = user;
     }
 
+    this.formData = getFormData(this.user.cv);
+
+    console.log(this.user.cv)
+
+    function getFormData(object) {
+      const formData = new FormData();
+      Object.keys(object).forEach(key => formData.append(key, object[key]));
+      return formData;
+  }
+
+    
+
+
     //Inicializa formulario
-    this.initializeForm();
+    this.initializeForm(this.formData);
 
   }
 
@@ -34,21 +49,37 @@ export class EditarCVComponent implements OnInit {
     /* console.log(this.user); */
   }
 
-  initializeForm(): void {
+  initializeForm(formData): void {
 
-    this.datosCV = this.fb.group({
+    /* this.datosCV = this.fb.group({
       sobreMi: this.user.cv.sobreMi,
       formacion: this.fb.array([
         this.fb.control('')
       ])
-    })
+    }) */
+
+    let form ={};
+
+    for (let i = 0; i < formData.length; i++) {
+      
+      form[formData[i].label] = new FormControl(formData.value);
+      console.log(form);
+      
+    }
+
+    this.datosCV = new FormGroup(form);
+    
   }
 
   onSubmit(): void {
     console.log(this.datosCV);
   }
 
-  getFormacion(): FormArray{
+  getFormacion(): FormArray {
     return this.datosCV?.get('formacion') as FormArray;
+  }
+
+  nuevaFormacion(): void {
+    this.formData.push({"sobreMi": ""});
   }
 }
