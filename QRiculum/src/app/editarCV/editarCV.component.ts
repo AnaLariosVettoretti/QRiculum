@@ -45,6 +45,9 @@ export class EditarCVComponent implements OnInit {
       redes: this.fb.array([]),
       formacion: this.fb.array([]),
       expLaboral: this.fb.array([]),
+      idiomas: this.fb.array([]),
+      conocimientos: this.fb.array([]),
+      certificados: this.fb.array([]),
     });
 
 
@@ -199,6 +202,48 @@ export class EditarCVComponent implements OnInit {
   }
 
 
+  //IDIOMAS
+
+  idiomas(): FormArray {
+    return this.formacionForm.get('idiomas') as FormArray;
+  }
+
+  newIdiomas(): FormGroup {
+    return this.fb.group({
+      idioma: '',
+      nivel: '',
+    });
+  }
+
+  addIdiomas() {
+    this.idiomas().push(this.newIdiomas());
+  }
+
+  removeIdiomas(empIndex: number) {
+    this.idiomas().removeAt(empIndex);
+  }
+
+  //CERTIFICADOS
+
+  certificados(): FormArray {
+    return this.formacionForm.get('certificados') as FormArray;
+  }
+
+  newCertificados(): FormGroup {
+    return this.fb.group({
+      certificado: '',
+      expedicion: '',
+      fecha: ''
+    });
+  }
+
+  addCertificados() {
+    this.certificados().push(this.newCertificados());
+  }
+
+  removeCertificados(empIndex: number) {
+    this.certificados().removeAt(empIndex);
+  }
 
 
 }
