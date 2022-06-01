@@ -48,7 +48,7 @@ export class ServicioUsuariosService {
       apellido1: 'Pérez',
       apellido2: 'García',
       email: 'jupergar@gmail.com',
-      contraseña: '123456',
+      contrasenia: '123456',
       telefono1: '678453275',
       telefono2: '643652785',
       ciudad: 'Madrid',
