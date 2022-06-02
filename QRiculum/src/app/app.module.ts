@@ -25,6 +25,7 @@ import { ServicioUsuariosService } from './servicio-usuarios.service';
 import { QrComponent } from './qr/qr.component';
 import { QRCodeModule } from 'angular2-qrcode';
 import { LandingComponent } from './landing/landing.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -58,6 +59,7 @@ import { LandingComponent } from './landing/landing.component';
     MatDatepickerModule,
     FormsModule,
     QRCodeModule,
+    HttpClientModule
   ],
 
   providers: [ServicioUsuariosService],

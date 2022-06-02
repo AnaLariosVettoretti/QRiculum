@@ -1,11 +1,36 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+const API_BASE = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioUsuariosService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getAll(){
+    return this.http.get(`${API_BASE}/usuarios`);
+  }
+
+  getOne(id:string){
+    return this.http.get(`${API_BASE}/usuarios/${id}`);
+  }
+
+  create(usuario:any){
+    return this.http.post(`${API_BASE}/usuarios`, usuario);
+  }
+
+  update(id:string, usuario:any){
+    return this.http.post(`${API_BASE}/usuarios/${id}`, usuario);
+  }
+
+  delete(id:string){
+    return this.http.delete(`${API_BASE}/usuarios/${id}`);
+  }
 
   login(username: string, contrasenia: string) {
 
