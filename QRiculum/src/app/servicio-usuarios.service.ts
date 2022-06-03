@@ -20,6 +20,12 @@ export class ServicioUsuariosService {
     return this.http.get(`${API_BASE}/usuarios/${id}`);
   }
 
+  validate(id:string, contrasenia: string){
+
+    return this.http.get(`${API_BASE}/usuarios/user?id=${id}&hash=${contrasenia}`);
+
+  }
+
   create(usuario:any){
     return this.http.post(`${API_BASE}/usuarios`, usuario);
   }
