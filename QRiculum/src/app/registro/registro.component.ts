@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-registro',
@@ -27,10 +28,17 @@ export class RegistroComponent implements OnInit {
     console.log(this.registroForm.value);
 
     this.miServicio
-        .create(this.registroForm.value)
-        .subscribe(() => {
-          console.log('registrado');                 
-        });
+      .create(this.registroForm.value)
+      .subscribe(() => {
+
+        Swal.fire({
+          title: 'Registrado con éxito',
+          icon: 'success',
+          confirmButtonText: '¡Genial!'
+        })
+
+      });
+
   }
 
 }
