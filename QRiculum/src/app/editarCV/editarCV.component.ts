@@ -41,7 +41,7 @@ export class EditarCVComponent implements OnInit {
     console.log('formacion', this.formacionForm.value)
 
     this.formacionForm = this.fb.group({
-      sobreMi: this.fb.control,
+      sobreMi: new FormControl(),
       redes: this.fb.array([]),
       formacion: this.fb.array([]),
       expLaboral: this.fb.array([]),

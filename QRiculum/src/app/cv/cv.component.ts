@@ -11,21 +11,26 @@ export class CvComponent implements OnInit {
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
-  user:any;
-  
+  user: any;
 
   ngOnInit() {
 
     const username = this.route.snapshot.queryParamMap.get('username');
 
     if (username) {
-      const user = this.miServicio.obtenerCVUsuario(username);
-      this.user = user;
+      /* const user = this.miServicio.obtenerCVUsuario(username); */
+      this.miServicio
+        .getOne(username)
+        .subscribe((data: any) => {
+          this.user = data;
+        });
+        
     }
   }
 
-  scroll(el: HTMLElement){
-    el.scrollIntoView({behavior: 'smooth'});
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 
 }
