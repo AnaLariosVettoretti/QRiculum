@@ -14,15 +14,30 @@ export class LoginComponent implements OnInit {
   username: string = '';
   contrasenia: string = '';
 
+  user:any;
+
   btnAcceder = () => {
 
-    const user = this.miServicio.login(this.username, this.contrasenia);
+    /* const user = this.miServicio.login(this.username, this.contrasenia); */
 
-    sessionStorage.setItem('usuario', JSON.stringify(user));
-    this.router.navigateByUrl('/usuario');
+    this.miServicio
+    .validate(this.username, this.contrasenia)
+    .subscribe((data: any) => {
+      this.user = data;
+      console.log(this.user);
+      
+    });
+
+    /* sessionStorage.setItem('usuario', JSON.stringify(user));
+    this.router.navigateByUrl('/usuario'); */
   };
 
   ngOnInit() {
+    
+  }
+
+  irRegistro() {
+    this.router.navigate(['/registro']);
   }
 
 }

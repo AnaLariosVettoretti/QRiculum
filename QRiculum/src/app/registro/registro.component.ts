@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService) { }
+  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService, private route: Router) { }
   registroForm: any = FormGroup;
 
   ngOnInit() {
@@ -39,6 +40,10 @@ export class RegistroComponent implements OnInit {
 
       });
 
+  }
+
+  irLogin() {
+    this.route.navigate(['/login']);
   }
 
 }
