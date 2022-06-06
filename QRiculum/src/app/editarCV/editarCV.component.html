@@ -236,7 +236,7 @@
     <hr>
 
 
-    <div formArrayName="redes" class="formulario">
+    <!-- <div formArrayName="redes" class="formulario">
       <h3 class="mt-5">Redes sociales</h3>
       <div *ngFor="let employee of redes().controls; let empIndex=index" class="formulario">
         <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
@@ -263,11 +263,11 @@
       </div>
       <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addRedes()">Añadir
         red social</button>
-    </div>
+    </div> -->
 
 
 
-    <hr>
+    <hr>  
 
     <div class="estudios">
 
@@ -315,7 +315,9 @@
 
         <hr>
 
-        <div formArrayName="expLaboral" class="formulario">
+        <!-- DESCOMENTAR -->
+
+        <!-- <div formArrayName="expLaboral" class="formulario">
           <h3 class="mt-5">Experiencia laboral</h3>
           <div *ngFor="let employee of expLaboral().controls; let empIndex=index" class="formulario">
             <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
@@ -351,7 +353,7 @@
           </div>
           <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addExpLaboral()">Añadir
             experiencia</button>
-        </div>
+        </div> -->
 
 
         <!-- <div formArrayName="expLaboral" class="formulario expLaboral">

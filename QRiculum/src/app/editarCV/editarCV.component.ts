@@ -14,6 +14,13 @@ export class EditarCVComponent implements OnInit {
   formacionForm: any = FormGroup;
   //datosCV: FormGroup;
   //formData;
+  listaOf:any = []
+  institucion:string = ''
+  denominación:string = ''
+  descripcion:string = ''
+  nota:string = ''
+  fIni:string  = ''
+  fFin:string = ''
 
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
@@ -27,7 +34,8 @@ export class EditarCVComponent implements OnInit {
     if (username) {
       const user = this.miServicio.obtenerCVUsuario(username);      
       this.user = user;
-      console.log('entras?', this.user)
+
+      console.log('ff=', this.user.cv.educacion )
     }
 
 
@@ -36,19 +44,26 @@ export class EditarCVComponent implements OnInit {
       formacion: this.fb.array([])
     });
 
-    this.addFakeFormacion()
+    for   (let i of  this.user.cv.educacion ){
+     
+      this.denominación = i.denominacion
+      this.institucion = i.institucion
+      this.descripcion = i.descripcion
+      this.fIni = i.fIni
+      this.fFin = i.fFin
+      this.nota = i.nota
+
+      this.newFakeData(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
+      this.addFakeFormacion()
+
+      console.log('denominacion', this.denominación)
+      console.log('institucion', this.institucion)
+      console.log('nota', this.nota)
+      console.log('fIni', this.fIni)
+      console.log('fFin', this.fFin)
+    }
 
     console.log('formacion', this.formacionForm.value)
-
-    this.formacionForm = this.fb.group({
-      sobreMi: new FormControl(),
-      redes: this.fb.array([]),
-      formacion: this.fb.array([]),
-      expLaboral: this.fb.array([]),
-      idiomas: this.fb.array([]),
-      conocimientos: this.fb.array([]),
-      certificados: this.fb.array([]),
-    });
 
 
     //   this.formData = getFormData(this.user.cv);
@@ -69,20 +84,16 @@ export class EditarCVComponent implements OnInit {
 
   }
 
-  newFakeData(): FormGroup {
+  newFakeData(denominación, institucion, descripcion, fIni, fFin, nota): FormGroup {
     return this.fb.group({
-      institucion: 'Ies Test',
-      denominacion: 'Superior',
-      descripcion: 'Test',
-      nota: 2,
-      fIni: '22-09-2022',
-      fFin: '22-06-2023'
-
+      institucion: denominación,
+      denominacion: institucion,
+      descripcion: descripcion,
+      nota: nota,
+      fIni:  fIni,
+      fFin:  fFin
+     
     });
-  }
-
-  addFakeFormacion() {
-    this.formacion().push(this.newFakeData());
   }
 
   guardarCambios() {
@@ -182,14 +193,15 @@ export class EditarCVComponent implements OnInit {
       nota: null,
       fIni: null,
       fFin: null
-
-
-      //skills: this.fb.array([])
     });
   }
 
   addFormacion() {
     this.formacion().push(this.newFormacion());
+  }
+
+  addFakeFormacion() {
+    this.formacion().push(this.newFakeData(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota));
   }
 
   removeFormacion(empIndex: number) {
