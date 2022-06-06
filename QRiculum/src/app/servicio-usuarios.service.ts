@@ -12,29 +12,30 @@ export class ServicioUsuariosService {
     private http: HttpClient
   ) { }
 
-  getAll(){
+  getAll() {
     return this.http.get(`${API_BASE}/usuarios`);
   }
 
-  getOne(id:string){
+  getOne(id: string) {
     return this.http.get(`${API_BASE}/usuarios/${id}`);
   }
 
-  validate(id:string, contrasenia: string){
+  validate(id: string, contrasenia: string) {
 
     return this.http.get(`${API_BASE}/usuarios/user?id=${id}&hash=${contrasenia}`);
 
+
   }
 
-  create(usuario:any){
+  create(usuario: any) {
     return this.http.post(`${API_BASE}/usuarios`, usuario);
   }
 
-  update(id:string, usuario:any){
+  update(id: string, usuario: any) {
     return this.http.post(`${API_BASE}/usuarios/${id}`, usuario);
   }
 
-  delete(id:string){
+  delete(id: string) {
     return this.http.delete(`${API_BASE}/usuarios/${id}`);
   }
 
@@ -129,10 +130,10 @@ export class ServicioUsuariosService {
           }
         ],
         conocimientos: [
-          'Angular 13' ,
-          'TypeScript' ,
-          'MySQL' ,
-          'MongoDB' 
+          'Angular 13',
+          'TypeScript',
+          'MySQL',
+          'MongoDB'
         ],
         certificados: [
           {

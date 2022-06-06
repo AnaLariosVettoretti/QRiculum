@@ -85,7 +85,7 @@
               <div class="subheading mb-3">{{experiencia.empresa}}</div>
               <p>{{experiencia.descripcion}}</p>
             </div>
-            <div class="flex-shrink-0"><span class="text-secondary">{{experiencia.fIni}} - {{experiencia.fFin}}</span>
+            <div class="flex-shrink-0"><span class="text-secondary">{{experiencia.fIni}} ---- <ng-container *ngIf="experiencia.fFin==''">Actualidad</ng-container>{{experiencia.fFin}}</span>
             </div>
   
           </ng-container>
@@ -108,7 +108,8 @@
               <div>{{educacion.descripcion}}</div>
               <p *ngIf="educacion.nota"> Nota: {{educacion.nota}}</p>
             </div>
-            <div class="flex-shrink-0"><span class="text-secondary">{{educacion.fIni}} - {{educacion.fFin}}</span></div>
+            <div class="flex-shrink-0"><span class="text-secondary">{{educacion.fIni}} ---- 
+              <ng-container *ngIf="educacion.fFin==''">Actualidad</ng-container> {{educacion.fFin}}</span></div>
           </div>
         </ng-container>
 

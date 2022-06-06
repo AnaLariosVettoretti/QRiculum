@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   usuario: any;
 
   btnSalir = () => {
-    this.router.navigateByUrl('/landing');
+    this.router.navigateByUrl('');
     sessionStorage.clear();
   };
 

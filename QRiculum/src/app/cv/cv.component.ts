@@ -23,6 +23,8 @@ export class CvComponent implements OnInit {
         .getOne(username)
         .subscribe((data: any) => {
           this.user = data;
+          console.log(this.user.cv);
+          
         });
         
     }

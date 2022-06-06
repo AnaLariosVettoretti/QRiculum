@@ -23,8 +23,17 @@ export class LoginComponent implements OnInit {
     this.miServicio
     .validate(this.username, this.contrasenia)
     .subscribe((data: any) => {
+      
       this.user = data;
-      console.log(this.user);
+      
+      if (this.user!=null) {
+        console.log(JSON.stringify(this.user));
+        sessionStorage.setItem('usuario', JSON.stringify(this.user));
+        this.router.navigate(['/usuario']);
+        
+        
+        
+      }
       
     });
 

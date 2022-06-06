@@ -9,11 +9,11 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  @Input() usuario: string | undefined;
-  @Input() nombre: string | undefined;
-  @Input() apellido1: string | undefined;
-  @Input() apellido2: string | undefined;
-  @Input() email: string | undefined;
+  @Input() usuario: string;
+  @Input() nombre: string;
+  @Input() apellido1: string;
+  @Input() apellido2: string;
+  @Input() email: string;
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
@@ -24,8 +24,11 @@ export class UsuarioComponent implements OnInit {
     //Obtiene de sesión el usuario
     const usuario = sessionStorage.getItem('usuario');
 
+    
+    
     if (usuario) {
       this.user = JSON.parse(usuario);
+      console.log(JSON.parse(usuario));
     }
    
   }
