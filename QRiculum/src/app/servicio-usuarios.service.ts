@@ -129,10 +129,10 @@ export class ServicioUsuariosService {
           }
         ],
         conocimientos: [
-          { conocimiento: 'Angular 13' },
-          { conocimiento: 'TypeScript' },
-          { conocimiento: 'MySQL' },
-          { conocimiento: 'MongoDB' }
+          'Angular 13' ,
+          'TypeScript' ,
+          'MySQL' ,
+          'MongoDB' 
         ],
         certificados: [
           {

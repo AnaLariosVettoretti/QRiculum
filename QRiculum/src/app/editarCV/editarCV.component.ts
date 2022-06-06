@@ -14,13 +14,29 @@ export class EditarCVComponent implements OnInit {
   formacionForm: any = FormGroup;
   //datosCV: FormGroup;
   //formData;
-  listaOf:any = []
-  institucion:string = ''
-  denominación:string = ''
-  descripcion:string = ''
-  nota:string = ''
-  fIni:string  = ''
-  fFin:string = ''
+
+  listaOf: any = []
+  sobreMi: string;
+
+  institucion: string = '';
+  denominación: string = '';
+  descripcion: string = '';
+  nota: string = '';
+  fIni: string = '';
+  fFin: string = '';
+
+  empresa: string;
+  cargo: string;
+  descripcionE: string;
+  fIniE: string;
+  fFinE: string;
+
+  idioma: string;
+  nivel: string;
+
+  red:string;
+  usuario:string;
+  
 
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
@@ -30,109 +46,130 @@ export class EditarCVComponent implements OnInit {
     //Coge nombre de usuario de la URL para hacer la petición al servicio y obtener el CV
     const username = this.route.snapshot.queryParamMap.get('username');
 
+    
 
     if (username) {
-      const user = this.miServicio.obtenerCVUsuario(username);      
-      this.user = user;
 
-      console.log('ff=', this.user.cv.educacion )
+
+      this.miServicio
+        .getOne(username)
+        .subscribe((data: any) => {
+          this.user = data;
+          console.log('ff=', this.user.cv);
+
+          if (this.user.cv != undefined) {
+
+            this.sobreMi = this.user.cv.sobreMi;
+      
+      
+            for (let i of this.user.cv.educacion) {
+      
+              this.denominación = i.denominacion
+              this.institucion = i.institucion
+              this.descripcion = i.descripcion
+              this.fIni = i.fIni
+              this.fFin = i.fFin
+              this.nota = i.nota
+      
+              this.datosFormacion(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
+              this.addDatosFormacion()
+
+            }
+      
+            console.log('formacion', this.formacionForm.value)
+      
+      
+            for (let i of this.user.cv.expLaboral) {
+      
+              this.empresa = i.empresa
+              this.cargo = i.cargo
+              this.descripcionE = i.descripcion
+              this.fIniE = i.fIni
+              this.fFinE = i.fFin
+      
+              this.datosExp(this.empresa, this.cargo, this.descripcionE, this.fIniE, this.fFinE);
+              this.addExp()
+            }
+      
+            for (let i of this.user.cv.idiomas) {
+      
+              this.idioma = i.idioma
+              this.nivel = i.nivel
+      
+              this.datosIdiomas(this.idioma, this.nivel);
+              this.addIdioma()
+            }
+
+            for (let i of this.user.cv.redes) {
+      
+              this.red = i.red
+              this.usuario = i.usuario
+      
+              this.datosRedes(this.red, this.usuario);
+              this.addRed()             
+            }
+          }
+        });
+
+        
+
     }
 
-
-
+    
     this.formacionForm = this.fb.group({
-      formacion: this.fb.array([])
+      sobreMi: new FormControl(this.sobreMi),
+      redes: this.fb.array([]),
+      formacion: this.fb.array([]),
+      expLaboral: this.fb.array([]),
+      idiomas: this.fb.array([]),
     });
-
-    for   (let i of  this.user.cv.educacion ){
-     
-      this.denominación = i.denominacion
-      this.institucion = i.institucion
-      this.descripcion = i.descripcion
-      this.fIni = i.fIni
-      this.fFin = i.fFin
-      this.nota = i.nota
-
-      this.newFakeData(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
-      this.addFakeFormacion()
-
-      console.log('denominacion', this.denominación)
-      console.log('institucion', this.institucion)
-      console.log('nota', this.nota)
-      console.log('fIni', this.fIni)
-      console.log('fFin', this.fFin)
-    }
-
-    console.log('formacion', this.formacionForm.value)
-
-
-    //   this.formData = getFormData(this.user.cv);
-
-    //   console.log(this.user.cv)
-
-    //   function getFormData(object) {
-    //     const formData = new FormData();
-    //     Object.keys(object).forEach(key => formData.append(key, object[key]));
-    //     return formData;
-    // }
-
-
-
-
-    //Inicializa formulario
-    //this.initializeForm(this.formData);
-
   }
 
-  newFakeData(denominación, institucion, descripcion, fIni, fFin, nota): FormGroup {
+
+  datosFormacion(denominación, institucion, descripcion, fIni, fFin, nota): FormGroup {
     return this.fb.group({
       institucion: denominación,
       denominacion: institucion,
       descripcion: descripcion,
       nota: nota,
-      fIni:  fIni,
-      fFin:  fFin
-     
+      fIni: fIni,
+      fFin: fFin
+
+    });
+  }
+
+  datosExp(empresa, cargo, descripcion, fIni, fFin): FormGroup {
+    return this.fb.group({
+      empresa: empresa,
+      cargo: cargo,
+      descripcion: descripcion,
+      fIni: fIni,
+      fFin: fFin
+    });
+  }
+
+  datosIdiomas(idioma, nivel): FormGroup {
+    return this.fb.group({
+      idioma: idioma,
+      nivel: nivel,
+    });
+  }
+
+  datosRedes(red, usuario): FormGroup {
+    return this.fb.group({
+      red: red,
+      usuario: usuario
     });
   }
 
   guardarCambios() {
     /* console.log(this.user); */
   }
+ 
 
-  // initializeForm(formData): void {
-
-  //   /* this.datosCV = this.fb.group({
-  //     sobreMi: this.user.cv.sobreMi,
-  //     formacion: this.fb.array([
-  //       this.fb.control('')
-  //     ])
-  //   }) */
-
-  //   let form ={};
-
-  //   for (let i = 0; i < formData.length; i++) {
-  //     
-  //     form[formData[i].label] = new FormControl(formData.value);
-  //     console.log(form);
-  //     
-  //   }
-
-  //   this.datosCV = new FormGroup(form);
-  //   
-  // }
-
-  // onSubmit(): void {
-  //   console.log(this.datosCV);
-  // }
-
-  // getFormacion(): FormArray {
-  //   return this.datosCV?.get('formacion') as FormArray;
-  // }
-
-  // nuevaFormacion(): void {
-  //   this.formData.push({"sobreMi": ""});
-  // }
+  addSobreMi(): FormControl{
+    return this.formacionForm.get('sobreMi') as FormControl;
+  }
 
   //REDES SOCIALES
 
@@ -196,12 +233,25 @@ export class EditarCVComponent implements OnInit {
     });
   }
 
+
   addFormacion() {
     this.formacion().push(this.newFormacion());
   }
 
-  addFakeFormacion() {
-    this.formacion().push(this.newFakeData(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota));
+  addDatosFormacion() {
+    this.formacion().push(this.datosFormacion(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota));
+  }
+
+  addExp() {
+    this.expLaboral().push(this.datosExp(this.empresa, this.cargo, this.descripcionE, this.fIniE, this.fFinE));
+  }
+
+  addIdioma() {
+    this.idiomas().push(this.datosIdiomas(this.idioma, this.nivel));
+  }
+
+  addRed() {
+    this.redes().push(this.datosRedes(this.red, this.usuario));
   }
 
   removeFormacion(empIndex: number) {
