@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from '@angular/router';
@@ -17,10 +17,10 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
 
     this.registroForm = this.fb.group({
-      usuario: new FormControl(),
-      email: new FormControl(),
-      contrasenia: new FormControl(),
-      contrasenia2: new FormControl(),
+      usuario: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      contrasenia: new FormControl('', [Validators.required]),
+      contrasenia2: new FormControl('', [Validators.required]),
     });
 
   }
@@ -46,4 +46,11 @@ export class RegistroComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
+ /*  getErrorMessage() {
+    if (this.registroForm.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.registroForm.hasError('email') ? 'Not a valid email' : '';
+  } */
 }
