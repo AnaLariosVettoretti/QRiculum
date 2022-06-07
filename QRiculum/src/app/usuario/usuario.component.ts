@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -16,7 +16,7 @@ export class UsuarioComponent implements OnInit {
   apellido2: string;
   email: string;
 
-  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private router: Router) { }
 
   user: any;
 
@@ -39,16 +39,51 @@ export class UsuarioComponent implements OnInit {
 
 
     this.miServicio.update(this.user.usuario, this.user).subscribe(data => {
-      
+
       sessionStorage.setItem('usuario', JSON.stringify(data));
-     
+
       Swal.fire({
         title: 'Datos actualizados',
         icon: 'success',
         confirmButtonText: 'Vale'
       })
-      
+
     })
+  }
+
+  borrarCuenta() {
+
+    Swal.fire({
+      title: '¿Quieres eliminar tu cuenta? Esta acción es irreversible',
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Cancelar',
+      denyButtonText: `Eliminar mi cuenta`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        console.log('cancelado');
+        
+      } else if (result.isDenied) {
+        
+        this.miServicio.delete(this.user.usuario).subscribe(data => {
+   
+          sessionStorage.clear();
+
+          Swal.fire({
+            title: 'Cuenta eliminada',
+            icon: 'success'
+          });
+
+          this.router.navigate(['']);
+          
+    
+        })
+        
+      }
+    })
+
+    
   }
 }
 
