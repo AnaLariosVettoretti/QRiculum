@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-usuario',
@@ -38,7 +39,14 @@ export class UsuarioComponent implements OnInit {
 
 
     this.miServicio.update(this.user.usuario, this.user).subscribe(data => {
-      console.log('actualizado');
+      
+      sessionStorage.setItem('usuario', JSON.stringify(data));
+     
+      Swal.fire({
+        title: 'Datos actualizados',
+        icon: 'success',
+        confirmButtonText: 'Vale'
+      })
       
     })
   }
