@@ -11,6 +11,8 @@ export class QrComponent implements OnInit {
 
   enlace: string = window.location.href.replace("qr", "cv");
 
+  user: any = JSON.parse(sessionStorage.getItem('usuario'));
+
   ngOnInit() {
     
   }
