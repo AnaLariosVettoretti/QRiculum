@@ -31,8 +31,8 @@ export class ServicioUsuariosService {
     return this.http.post(`${API_BASE}/usuarios`, usuario);
   }
 
-  update(id: string, usuario: any) {
-    return this.http.post(`${API_BASE}/usuarios/${id}`, usuario);
+  update(id: string, usuario: any) {   
+    return this.http.put(`${API_BASE}/usuarios/update/${id}`, usuario);
   }
 
   delete(id: string) {
