@@ -9,32 +9,42 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  @Input() usuario: string;
-  @Input() nombre: string;
-  @Input() apellido1: string;
-  @Input() apellido2: string;
-  @Input() email: string;
+  usuario: any;
+  nombre: string;
+  apellido1: string;
+  apellido2: string;
+  email: string;
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
 
   user: any;
 
   ngOnInit() {
-  
-    //Obtiene de sesión el usuario
-    const usuario = sessionStorage.getItem('usuario');
 
-    
-    
+    //Obtiene de sesión el usuario
+    var usuario = sessionStorage.getItem('usuario');
+
+
+
     if (usuario) {
       this.user = JSON.parse(usuario);
       console.log(JSON.parse(usuario));
     }
-   
+
   }
 
   guardarCambios() {
-    /* console.log(this.user); */
-  }
+    console.log(this.user);
 
+
+    this.miServicio.update(this.user.usuario, this.user).subscribe(data => {
+      console.log('actualizado');
+      
+    })
+  }
 }
+
+
+
+
+
