@@ -12,8 +12,6 @@ export class EditarCVComponent implements OnInit {
 
   user: any;
   formacionForm: any = FormGroup;
-  //datosCV: FormGroup;
-  //formData;
 
   listaOf: any = []
   sobreMi: string;
@@ -50,10 +48,7 @@ export class EditarCVComponent implements OnInit {
     //Coge nombre de usuario de la URL para hacer la petición al servicio y obtener el CV
     const username = this.route.snapshot.queryParamMap.get('username');
 
-    
-
     if (username) {
-
 
       this.miServicio
         .getOne(username)
@@ -63,7 +58,8 @@ export class EditarCVComponent implements OnInit {
 
           if (this.user.cv != undefined) {
 
-            this.sobreMi = this.user.cv.sobreMi;
+            this.sobreMi = this.user.cv.sobreMi;            
+            this.formacionForm.controls.sobreMi.setValue(this.sobreMi);
       
       
             for (let i of this.user.cv.educacion) {
@@ -134,9 +130,6 @@ export class EditarCVComponent implements OnInit {
 
           }
         });
-
-        
-
     }
 
     
@@ -200,15 +193,7 @@ export class EditarCVComponent implements OnInit {
     
     return this.fb.control(conocimiento);
   }
-
-  guardarCambios() {
-    /* console.log(this.user); */
-  }
  
-
-  addSobreMi(): FormControl{
-    return this.formacionForm.get('sobreMi') as FormControl;
-  }
 
   //REDES SOCIALES
 
