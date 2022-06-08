@@ -37,6 +37,9 @@ export class EditarCVComponent implements OnInit {
   red:string;
   usuario:string;
   
+  certificado:string;
+  expedicion:string;
+  fecha:string;
 
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
@@ -108,6 +111,16 @@ export class EditarCVComponent implements OnInit {
               this.datosRedes(this.red, this.usuario);
               this.addRed()             
             }
+
+            for (let i of this.user.cv.certificados) {
+      
+              this.certificado = i.certificado;
+              this.expedicion = i.expedicion;
+              this.fecha = i.fecha;
+      
+              this.datosCertificados(this.certificado, this.expedicion, this.fecha);
+              this.addCertificado();             
+            }
           }
         });
 
@@ -122,6 +135,7 @@ export class EditarCVComponent implements OnInit {
       formacion: this.fb.array([]),
       expLaboral: this.fb.array([]),
       idiomas: this.fb.array([]),
+      certificados: this.fb.array([])
     });
   }
 
@@ -159,6 +173,14 @@ export class EditarCVComponent implements OnInit {
     return this.fb.group({
       red: red,
       usuario: usuario
+    });
+  }
+
+  datosCertificados(certificado, expedicion, fecha): FormGroup {
+    return this.fb.group({
+      certificado: certificado,
+      expedicion: expedicion,
+      fecha: fecha
     });
   }
 
@@ -252,6 +274,10 @@ export class EditarCVComponent implements OnInit {
 
   addRed() {
     this.redes().push(this.datosRedes(this.red, this.usuario));
+  }
+
+  addCertificado() {
+    this.certificados().push(this.datosCertificados(this.certificado, this.expedicion, this.fecha));
   }
 
   removeFormacion(empIndex: number) {

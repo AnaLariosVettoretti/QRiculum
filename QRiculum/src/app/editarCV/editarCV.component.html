@@ -399,6 +399,36 @@
           
         </div>
 
+        <hr>
+
+        <div formArrayName="certificados" class="formulario">
+          <h3 class="mt-5">Certificados</h3>
+          <div *ngFor="let employee of certificados().controls; let empIndex=index" class="formulario">
+            <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+              <h4>Certificado {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeCertificados(empIndex)"><i
+                    class="fa-solid fa-trash"></i></button></h4>
+                    <mat-form-field appearance="outline" class="col-8 m-3">
+                      <mat-label>Certificado</mat-label>
+                      <input matInput placeholder="Ej. Professional Cloud Architect" formControlName="certificado">
+                    </mat-form-field>
+          
+                    <mat-form-field appearance="outline" class="col-4 m-3">
+                      <mat-label>Expedición</mat-label>
+                      <input matInput placeholder="Ej. Google" formControlName="expedicion">
+                    </mat-form-field>
+          
+                    <mat-form-field appearance="outline" class="col-4">
+                      <mat-label>Fecha de expedición</mat-label>
+                      <input matInput type="date" formControlName="fecha">
+                    </mat-form-field>
+          
+
+            </div>
+          </div>
+          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addCertificados()">Añadir
+            certificado</button>
+        </div>
+
 
       </div>
     </div>
