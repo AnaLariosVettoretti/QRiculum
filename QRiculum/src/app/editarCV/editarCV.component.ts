@@ -41,6 +41,7 @@ export class EditarCVComponent implements OnInit {
   expedicion:string;
   fecha:string;
 
+  conocimiento:string;
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
@@ -113,14 +114,24 @@ export class EditarCVComponent implements OnInit {
             }
 
             for (let i of this.user.cv.certificados) {
+        
+                this.certificado = i.certificado;
+                this.expedicion = i.expedicion;
+                this.fecha = i.fecha;
+        
+                this.datosCertificados(this.certificado, this.expedicion, this.fecha);
+                this.addCertificado();             
+              }
+
+            for (let i of this.user.cv.conocimientos) {
       
-              this.certificado = i.certificado;
-              this.expedicion = i.expedicion;
-              this.fecha = i.fecha;
-      
-              this.datosCertificados(this.certificado, this.expedicion, this.fecha);
-              this.addCertificado();             
+              this.conocimiento = i;
+              
+              this.datosConocimientos(this.conocimiento);
+              this.addConocimientos(); 
+              
             }
+
           }
         });
 
@@ -135,7 +146,8 @@ export class EditarCVComponent implements OnInit {
       formacion: this.fb.array([]),
       expLaboral: this.fb.array([]),
       idiomas: this.fb.array([]),
-      certificados: this.fb.array([])
+      certificados: this.fb.array([]),
+      conocimientos: this.fb.array([])
     });
   }
 
@@ -182,6 +194,11 @@ export class EditarCVComponent implements OnInit {
       expedicion: expedicion,
       fecha: fecha
     });
+  }
+
+  datosConocimientos(conocimiento): FormControl {
+    
+    return this.fb.control(conocimiento);
   }
 
   guardarCambios() {
@@ -280,6 +297,10 @@ export class EditarCVComponent implements OnInit {
     this.certificados().push(this.datosCertificados(this.certificado, this.expedicion, this.fecha));
   }
 
+  addConocimientos() {
+    this.conocimientos().push(this.datosConocimientos(this.conocimiento));
+  }
+
   removeFormacion(empIndex: number) {
     this.formacion().removeAt(empIndex);
   }
@@ -331,6 +352,24 @@ export class EditarCVComponent implements OnInit {
 
   removeCertificados(empIndex: number) {
     this.certificados().removeAt(empIndex);
+  }
+
+  //CONOCIMIENTOS
+
+  conocimientos(): FormArray {
+    return this.formacionForm.get('conocimientos') as FormArray;
+  }
+
+  newConocimiento(): FormControl {
+    return new FormControl('');
+  }
+
+  addConocimiento() {
+    this.conocimientos().push(this.newConocimiento());
+  }
+
+  removeConocimiento(empIndex: number) {
+    this.conocimientos().removeAt(empIndex);
   }
 
 

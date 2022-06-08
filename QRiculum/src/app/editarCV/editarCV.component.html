@@ -430,6 +430,28 @@
         </div>
 
 
+        <hr>
+
+
+        <div formArrayName="conocimientos" class="formulario">
+          <h3 class="mt-5">Conocimientos</h3>
+          <div *ngFor="let employee of conocimientos().controls; let empIndex=index" class="formulario">
+            <div  class="tarjeta p-2 mb-3 mt-2">
+              <h4>Conocimiento {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeConocimiento(empIndex)"><i
+                    class="fa-solid fa-trash"></i></button></h4>
+                    <mat-form-field appearance="outline" class="col-8 m-3">
+                      <mat-label>Conocimiento</mat-label>
+                      <input matInput placeholder="Ej. Angular, MySQL..." formControlName="{{empIndex}}">
+                    </mat-form-field>
+          
+
+            </div>
+          </div>
+          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addConocimiento()">Añadir
+            certificado</button>
+        </div>
+
+
       </div>
     </div>
   </form>
