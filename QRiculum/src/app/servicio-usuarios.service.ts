@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 const API_BASE = 'http://localhost:8080';
 
@@ -11,6 +12,9 @@ export class ServicioUsuariosService {
   constructor(
     private http: HttpClient
   ) { }
+
+  //Variable mostrar header
+  showHeader$ = new BehaviorSubject(false);
 
   getAll() {
     return this.http.get(`${API_BASE}/usuarios`);
@@ -31,48 +35,33 @@ export class ServicioUsuariosService {
     return this.http.post(`${API_BASE}/usuarios`, usuario);
   }
 
-  update(id: string, usuario: any) {   
+  update(id: string, usuario: any) {
     return this.http.put(`${API_BASE}/usuarios/update/${id}`, usuario);
+  }
+
+  updateCV(id: string, usuario: any) {
+    return this.http.put(`${API_BASE}/usuarios/updateCV/${id}`, usuario);
   }
 
   delete(id: string) {
     return this.http.delete(`${API_BASE}/usuarios/${id}`);
   }
 
-  login(username: string, contrasenia: string) {
+ /*  checkHeader() {
 
-    const user = {
-      usuario: 'JuanPerez95',
-      nombre: 'Juan',
-      apellido1: 'Pérez',
-      apellido2: 'García',
-      email: 'jupergar@gmail.com',
-      contrasenia: '123456',
-      telefono1: '678453275',
-      telefono2: '643652785',
-      ciudad: 'Madrid'
+    console.log('entra check');
+    
+    if (sessionStorage.getItem('usuario')!= null) {
+      this.showHeader$.next(true);
+      console.log('entra if');
+      
     }
+    
+  } */
 
-    return user;
-  }
 
-  obtenerDatosUsuario(username: string) {
 
-    const user = {
-      usuario: 'JuanPerez95',
-      nombre: 'Juan',
-      apellido1: 'Pérez',
-      apellido2: 'García',
-      email: 'jupergar@gmail.com',
-      contrasenia: '123456',
-      telefono1: '678453275',
-      telefono2: '643652785',
-      ciudad: 'Madrid'
-    }
-    return user;
-  }
-
-  obtenerCVUsuario(username: string) {
+  /* obtenerCVUsuario(username: string) {
 
     const user = {
       usuario: 'JuanPerez95',
@@ -169,6 +158,6 @@ export class ServicioUsuariosService {
     }
 
     return user;
-  }
+  } */
 
 }

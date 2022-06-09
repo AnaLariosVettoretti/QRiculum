@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { FormGroup, FormControl, FormBuilder, FormArray } from "@angular/forms";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-editarCV',
@@ -9,6 +10,8 @@ import { FormGroup, FormControl, FormBuilder, FormArray } from "@angular/forms";
   styleUrls: ['./editarCV.component.css']
 })
 export class EditarCVComponent implements OnInit {
+
+  username: string;
 
   user: any;
   formacionForm: any = FormGroup;
@@ -32,14 +35,14 @@ export class EditarCVComponent implements OnInit {
   idioma: string;
   nivel: string;
 
-  red:string;
-  usuario:string;
-  
-  certificado:string;
-  expedicion:string;
-  fecha:string;
+  red: string;
+  usuario: string;
 
-  conocimiento:string;
+  certificado: string;
+  expedicion: string;
+  fecha: string;
+
+  conocimiento: string;
 
   constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
@@ -47,6 +50,7 @@ export class EditarCVComponent implements OnInit {
 
     //Coge nombre de usuario de la URL para hacer la petición al servicio y obtener el CV
     const username = this.route.snapshot.queryParamMap.get('username');
+    this.username = username;
 
     if (username) {
 
@@ -58,81 +62,83 @@ export class EditarCVComponent implements OnInit {
 
           if (this.user.cv != undefined) {
 
-            this.sobreMi = this.user.cv.sobreMi;            
+            this.sobreMi = this.user.cv.sobreMi;
             this.formacionForm.controls.sobreMi.setValue(this.sobreMi);
-      
-      
-            for (let i of this.user.cv.educacion) {
-      
-              this.denominación = i.denominacion
-              this.institucion = i.institucion
-              this.descripcion = i.descripcion
-              this.fIni = i.fIni
-              this.fFin = i.fFin
-              this.nota = i.nota
-      
-              this.datosFormacion(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
-              this.addDatosFormacion()
 
+
+            if(this.user.cv.educacion!=null){
+              for (let i of this.user.cv.educacion) {
+
+                this.denominación = i.denominacion
+                this.institucion = i.institucion
+                this.descripcion = i.descripcion
+                this.fIni = i.fIni
+                this.fFin = i.fFin
+                this.nota = i.nota
+  
+                this.datosFormacion(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
+                this.addDatosFormacion()
+  
+              }
             }
-      
-            console.log('formacion', this.formacionForm.value)
-      
-      
+            
+            
+
+
             for (let i of this.user.cv.expLaboral) {
-      
+
               this.empresa = i.empresa
               this.cargo = i.cargo
               this.descripcionE = i.descripcion
               this.fIniE = i.fIni
               this.fFinE = i.fFin
-      
+
               this.datosExp(this.empresa, this.cargo, this.descripcionE, this.fIniE, this.fFinE);
               this.addExp()
             }
-      
+
             for (let i of this.user.cv.idiomas) {
-      
+
               this.idioma = i.idioma
               this.nivel = i.nivel
-      
+
               this.datosIdiomas(this.idioma, this.nivel);
               this.addIdioma()
             }
 
             for (let i of this.user.cv.redes) {
-      
+
               this.red = i.red
               this.usuario = i.usuario
-      
+
               this.datosRedes(this.red, this.usuario);
-              this.addRed()             
+              this.addRed()
             }
 
             for (let i of this.user.cv.certificados) {
-        
-                this.certificado = i.certificado;
-                this.expedicion = i.expedicion;
-                this.fecha = i.fecha;
-        
-                this.datosCertificados(this.certificado, this.expedicion, this.fecha);
-                this.addCertificado();             
-              }
+
+              this.certificado = i.certificado;
+              this.expedicion = i.expedicion;
+              this.fecha = i.fecha;
+
+              this.datosCertificados(this.certificado, this.expedicion, this.fecha);
+              this.addCertificado();
+            }
 
             for (let i of this.user.cv.conocimientos) {
-      
+
               this.conocimiento = i;
-              
+
               this.datosConocimientos(this.conocimiento);
-              this.addConocimientos(); 
-              
+              this.addConocimientos();
+
             }
 
           }
         });
     }
 
-    
+
     this.formacionForm = this.fb.group({
       sobreMi: new FormControl(this.sobreMi),
       redes: this.fb.array([]),
@@ -190,10 +196,10 @@ export class EditarCVComponent implements OnInit {
   }
 
   datosConocimientos(conocimiento): FormControl {
-    
+
     return this.fb.control(conocimiento);
   }
- 
+
 
   //REDES SOCIALES
 
@@ -291,8 +297,23 @@ export class EditarCVComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  actualizarCV() {
     console.log(this.formacionForm.value);
+
+    this.user.cv = this.formacionForm.value
+
+    console.log(this.user.cv);
+
+    this.miServicio.updateCV(this.username, this.user).subscribe(data => {
+
+      Swal.fire({
+        title: 'CV actualizado con éxito',
+        icon: 'success'
+      });
+
+    })
+
+
   }
 
 
