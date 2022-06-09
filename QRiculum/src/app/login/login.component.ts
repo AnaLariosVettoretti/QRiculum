@@ -15,10 +15,9 @@ export class LoginComponent implements OnInit {
   contrasenia: string = '';
 
   user:any;
+  showHeader;
 
   btnAcceder = () => {
-
-    /* const user = this.miServicio.login(this.username, this.contrasenia); */
 
     this.miServicio
     .validate(this.username, this.contrasenia)
@@ -27,10 +26,10 @@ export class LoginComponent implements OnInit {
       this.user = data;
       
       if (this.user!=null) {
-        console.log(JSON.stringify(this.user));
+
         sessionStorage.setItem('usuario', JSON.stringify(this.user));
         this.router.navigate(['/usuario']);
-        
+        /* this.miServicio.showHeader$?.subscribe(e => (this.showHeader = e)); */
         
         
       }else{
