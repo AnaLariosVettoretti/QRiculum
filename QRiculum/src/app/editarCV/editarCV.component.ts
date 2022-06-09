@@ -142,7 +142,7 @@ export class EditarCVComponent implements OnInit {
     this.formacionForm = this.fb.group({
       sobreMi: new FormControl(this.sobreMi),
       redes: this.fb.array([]),
-      formacion: this.fb.array([]),
+      educacion: this.fb.array([]),
       expLaboral: this.fb.array([]),
       idiomas: this.fb.array([]),
       certificados: this.fb.array([]),
@@ -249,7 +249,7 @@ export class EditarCVComponent implements OnInit {
   //FORMACIÓN
 
   formacion(): FormArray {
-    return this.formacionForm.get('formacion') as FormArray;
+    return this.formacionForm.get('educacion') as FormArray;
   }
 
   newFormacion(): FormGroup {
