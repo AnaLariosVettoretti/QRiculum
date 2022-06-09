@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   contrasenia: string = '';
 
   user:any;
-  showHeader;
 
   btnAcceder = () => {
 
@@ -29,8 +28,8 @@ export class LoginComponent implements OnInit {
 
         sessionStorage.setItem('usuario', JSON.stringify(this.user));
         this.router.navigate(['/usuario']);
-        /* this.miServicio.showHeader$?.subscribe(e => (this.showHeader = e)); */
-        
+
+        this.miServicio.checkHeader();       
         
       }else{
         console.log('mal');

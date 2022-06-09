@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicioUsuariosService } from 'src/app/servicio-usuarios.service';
 
 
 @Component({
@@ -11,13 +12,15 @@ export class HeaderComponent implements OnInit {
 
   @Input() nombreUsuario: string | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private miServicio: ServicioUsuariosService) { }
 
   usuario: any;
+  showHeader: boolean;
 
   btnSalir = () => {
     this.router.navigateByUrl('');
     sessionStorage.clear();
+    this.miServicio.checkHeader(); 
   };
 
 
@@ -28,7 +31,9 @@ export class HeaderComponent implements OnInit {
     if (user) {
       this.usuario = JSON.parse(user);
     }
-    
+
+    this.miServicio.showHeader$?.subscribe(e => (this.showHeader = e));
+
   }
 
 }

@@ -1,4 +1,4 @@
-
+<ng-container *ngIf="showHeader && usuario?.nombre">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <!-- Container wrapper -->
@@ -51,7 +51,8 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item mt-1 ml-5">
-          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: 'JuanPerez95'}"><span class="small">Bienvenid@ {{usuario.nombre}} 
+          <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: '{{user.usuario}}'}"><span class="small">Bienvenid@ 
+            {{usuario.nombre}}
             <!-- Aqui iria el avatar -->
             <img src="../../../assets/profile.png" class="rounded-circle" height="30"
               alt="" loading="lazy" /></span></a>
@@ -76,3 +77,4 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+</ng-container>
