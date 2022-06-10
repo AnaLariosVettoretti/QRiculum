@@ -63,25 +63,26 @@ export class UsuarioComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         console.log('cancelado');
-        
+
       } else if (result.isDenied) {
-        
+
         this.miServicio.delete(this.user.usuario).subscribe(data => {
-   
+
           sessionStorage.clear();
+          this.miServicio.checkHeader();
 
           Swal.fire({
             title: 'Cuenta eliminada',
             icon: 'success'
           });
 
-          this.router.navigate(['']);    
+          this.router.navigate(['']);
         })
       }
     })
 
-    this.miServicio.checkHeader(); 
-    
+    this.miServicio.checkHeader();
+
   }
 }
 
