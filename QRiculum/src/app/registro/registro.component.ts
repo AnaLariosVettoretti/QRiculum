@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService, private route: Router) { }
+  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService, private route: Router, private router: Router) { }
   registroForm: any = FormGroup;
 
   ngOnInit() {
@@ -39,6 +39,11 @@ export class RegistroComponent implements OnInit {
         })
 
       });
+      sessionStorage.setItem('usuario', JSON.stringify(this.registroForm.value));
+
+      this.miServicio.checkHeader(); 
+
+      this.router.navigate(['/usuario']);
 
   }
 

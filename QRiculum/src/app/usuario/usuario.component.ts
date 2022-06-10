@@ -75,14 +75,12 @@ export class UsuarioComponent implements OnInit {
             icon: 'success'
           });
 
-          this.router.navigate(['']);
-          
-    
+          this.router.navigate(['']);    
         })
-        
       }
     })
 
+    this.miServicio.checkHeader(); 
     
   }
 }
