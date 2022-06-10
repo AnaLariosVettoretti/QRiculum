@@ -1,43 +1,66 @@
 <div class="registro container mt-5 bg-light p-5 col-10 mt-5 text-center">
 
-  <h3>Regístrate</h3>
+  <div class="row text-center">
 
-  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <h3>Regístrate</h3>
 
-    <mat-form-field appearance="outline" class="col-7 mt-2">
-      <mat-label>Usuario</mat-label>
-      <input matInput placeholder="Usuario" formControlName="usuario" (blur)="checkUsername($event)">
-      <mat-icon matSuffix>alternate_email</mat-icon>
-      <mat-hint>Entre 5 y 20 caracteres</mat-hint>
-    </mat-form-field>
+    <form [formGroup]="registroForm">
 
-    <mat-form-field appearance="outline" class="col-7">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" formControlName="email">
-      <mat-icon matSuffix>email</mat-icon>
+      <div class="row w-100 d-flex justify-content-center align-items-center">
+        <mat-form-field appearance="outline" class="col-7 mt-2 ">
+          <mat-label>Usuario</mat-label>
+          <input matInput placeholder="Usuario" formControlName="usuario" (blur)="checkUsername($event)">
+          <mat-icon matSuffix>alternate_email</mat-icon>
+          <mat-hint>Entre 5 y 20 caracteres</mat-hint>
+        </mat-form-field>
 
-    </mat-form-field>
+        <mat-icon matTooltip="My tooltip" class="col-1">info</mat-icon>
+      </div>
 
-    <mat-form-field appearance="outline" class="col-7">
-      <mat-label>Contraseña</mat-label>
-      <input matInput placeholder="Contraseña" formControlName="contrasenia" type="password">
-      <mat-icon matSuffix>password</mat-icon>
-      <mat-hint>Entre 5 y 20 caracteres</mat-hint>
-    </mat-form-field>
+      <div class="row w-100 d-flex justify-content-center align-items-center">
 
+        <mat-form-field appearance="outline" class="col-7">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
 
-    <mat-form-field appearance="outline" class="col-7">
-      <mat-label>Repite la contraseña</mat-label>
-      <input matInput placeholder="Repite la contraseña" formControlName="contrasenia2" type="password">
-      <mat-icon matSuffix>password</mat-icon>
-    </mat-form-field>
+        </mat-form-field>
 
+      </div>
 
-    <button mat-raised-button color="primary" class="col-7 p-1">Registro</button>
-    <br>
+      <div class="row w-100 d-flex justify-content-center align-items-center">
+
+        <mat-form-field appearance="outline" class="col-7">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder="Contraseña" formControlName="contrasenia" type="password">
+          <mat-icon matSuffix>password</mat-icon>
+          <mat-hint>Entre 5 y 20 caracteres</mat-hint>
+        </mat-form-field>
+
+      </div>
+
+      <div class="row w-100 d-flex justify-content-center align-items-center">
+
+        <mat-form-field appearance="outline" class="col-7">
+          <mat-label>Repite la contraseña</mat-label>
+          <input matInput placeholder="Repite la contraseña" formControlName="contrasenia2" type="password">
+          <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+      <div class="row w-100 d-flex justify-content-center align-items-center">
+        <button mat-raised-button color="primary" class="col-5" (click)="onSubmit()">Registro</button>
+      </div>
+
+      <div class="row w-100 d-flex justify-content-center align-items-center">
+        <a (click)="irLogin()" class="m-5">¿Ya tienes una cuenta? Accede</a>
+      </div>
+
+    </form>
 
     
-  </form>
 
-  <a (click)="irLogin()" class="m-5">¿Ya tienes una cuenta? Accede</a>
+  </div>
+
 </div>
