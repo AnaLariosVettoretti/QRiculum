@@ -51,11 +51,27 @@ export class RegistroComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
- /*  getErrorMessage() {
-    if (this.registroForm.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.registroForm.hasError('email') ? 'Not a valid email' : '';
-  } */
+ checkUsername(event: Event){
+  console.log('entra');
+  
+  const username = (<HTMLInputElement>event.target).value;
+  
+  if (username != '') {
+    this.miServicio
+    .getOne(username)
+    .subscribe((data: any) => {
+      const usuario = data;
+      console.log(usuario);
+      
+      if (usuario == null) {
+        console.log('libre');
+        
+      }else{
+        console.log('pillado');
+        
+      }
+    });
+  }
+ 
+ }
 }
