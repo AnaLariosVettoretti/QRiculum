@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario',
@@ -11,12 +12,10 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class UsuarioComponent implements OnInit {
 
   usuario: any;
-  nombre: string;
-  apellido1: string;
-  apellido2: string;
-  email: string;
 
-  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private router: Router) { }
+  usuarioForm: any;
+
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 
   user: any;
 
@@ -32,23 +31,40 @@ export class UsuarioComponent implements OnInit {
       console.log(JSON.parse(usuario));
     }
 
+    this.usuarioForm = this.fb.group({
+      usuario: this.user.usuario,
+      contrasenia: this.user.contrasenia,
+      nombre: new FormControl(this.user.nombre, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
+      apellido1: new FormControl(this.user.apellido1, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
+      apellido2: new FormControl(this.user.apellido2, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
+      email: new FormControl(this.user.email, [Validators.required]),
+      telefono1: new FormControl(this.user.telefono1, [Validators.required, Validators.pattern('[0-9]{9}$')]),
+      telefono2: new FormControl(this.user.telefono2, [Validators.required, Validators.pattern('[0-9]{9}$')]),
+      ciudad: new FormControl(this.user.ciudad, [Validators.required]),
+      cv: this.user.cv
+    });
+
   }
 
   guardarCambios() {
-    console.log(this.user);
 
+    if (this.usuarioForm.valid) {
+      console.log(this.usuarioForm.value);
 
-    this.miServicio.update(this.user.usuario, this.user).subscribe(data => {
+      this.miServicio.update(this.user.usuario, this.usuarioForm.value).subscribe(data => {
 
-      sessionStorage.setItem('usuario', JSON.stringify(data));
+        sessionStorage.setItem('usuario', JSON.stringify(data));
 
-      Swal.fire({
-        title: 'Datos actualizados',
-        icon: 'success',
-        confirmButtonText: 'Vale'
+        Swal.fire({
+          title: 'Datos actualizados',
+          icon: 'success',
+          confirmButtonText: 'Vale'
+        })
+
       })
+    }
 
-    })
+
   }
 
   borrarCuenta() {
@@ -83,6 +99,10 @@ export class UsuarioComponent implements OnInit {
 
     this.miServicio.checkHeader();
 
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.usuarioForm.controls[controlName].hasError(errorName);
   }
 }
 
