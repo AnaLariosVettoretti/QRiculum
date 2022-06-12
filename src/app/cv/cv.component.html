@@ -1,0 +1,187 @@
+<div class="cv">
+  <ng-container *ngIf="user">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{user.nombre}} {{user.apellido1}} {{user.apellido2}}</span>
+        <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+            src="../../assets/profile.png" alt="..." /></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(about)">Sobre mí</a></li>
+
+          <!-- <ng-container *ngIf="user.cv.expLaboral"> -->
+          <li class="nav-item" *ngIf="user.cv.expLaboral"><a class="nav-link js-scroll-trigger"
+              (click)="scroll(experience)">Experiencia</a></li>
+          <!-- </ng-container>  -->
+
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(education)">Formación</a></li>
+
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(skills)">Idiomas</a></li>
+
+          <!-- <ng-container *ngIf="user.cv.certificados"> -->
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(awards)">Certificados</a></li>
+          <!-- </ng-container> -->
+
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scroll(interests)">Conocimientos</a></li>
+
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+      <!-- About-->
+      <section class="resume-section" id="about" #about>
+        <div class="resume-section-content">
+          <h1 class="mb-0">
+            {{user.nombre}}
+            <span class="text-secondary">{{user.apellido1}} {{user.apellido2}}</span>
+          </h1>
+          <div class="subheading mb-5">
+            {{user.ciudad}} · {{user.telefono1}} · {{user.telefono2}} ·
+            <a>{{user.email}}</a>
+          </div>
+          <p class="lead mb-5">{{user.cv.sobreMi}}</p>
+          <div class="social-icons">
+
+            <ng-container *ngFor="let red of user.cv.redes">
+
+              <ng-container *ngIf="red.red == 'linkedin'">
+                <a class="social-icon" href="https://www.linkedin.com/in/{{red.usuario}}/"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </ng-container>
+
+              <ng-container *ngIf="red.red == 'github'">
+                <a class="social-icon" href="https://www.github.com/{{red.usuario}}"><i class="fab fa-github"></i></a>
+              </ng-container>
+
+              <ng-container *ngIf="red.red == 'twitter'">
+                <a class="social-icon" href="https://www.twitter.com/{{red.usuario}}"><i class="fab fa-twitter"></i></a>
+              </ng-container>
+
+              <ng-container *ngIf="red.red == 'instagram'">
+                <a class="social-icon" href="https://www.instagram.com/{{red.usuario}}"><i
+                    class="fab fa-instagram"></i></a>
+              </ng-container>
+
+            </ng-container>
+
+
+          </div>
+        </div>
+
+      </section>
+      <hr class="m-0" />
+      <!-- Experience-->
+      <!-- <ng-container *ngIf="user.cv.expLaboral"> -->
+      <section class="resume-section" id="experience" #experience>
+        <div class="resume-section-content" *ngIf="user.cv.expLaboral">
+          <h2 class="mb-5">Experiencia Laboral</h2>
+          <ng-container *ngFor="let experiencia of user.cv.expLaboral">
+            <div class="flex-grow-1">
+              <h3 class="mb-0">{{experiencia.cargo}}</h3>
+              <div class="subheading mb-3">{{experiencia.empresa}}</div>
+              <p>{{experiencia.descripcion}}</p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-secondary">{{experiencia.fIni}} ---- <ng-container
+                  *ngIf="experiencia.fFin==''">Actualidad</ng-container>{{experiencia.fFin}}</span>
+            </div>
+
+          </ng-container>
+
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- </ng-container> -->
+
+      <!-- Education-->
+      <section class="resume-section" id="education" #education>
+        <div class="resume-section-content">
+          <h2 class="mb-5">Formación</h2>
+
+          <ng-container *ngFor="let educacion of user.cv.educacion">
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <h3 class="mb-0">{{educacion.institucion}}</h3>
+                <div class="subheading mb-3">{{educacion.denominacion}}</div>
+                <div>{{educacion.descripcion}}</div>
+                <p *ngIf="educacion.nota"> Nota: {{educacion.nota}}</p>
+              </div>
+              <div class="flex-shrink-0"><span class="text-secondary">{{educacion.fIni}} ----
+                  <ng-container *ngIf="educacion.fFin==null">Actualidad</ng-container> {{educacion.fFin}}
+                </span></div>
+            </div>
+          </ng-container>
+
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Skills-->
+      <section class="resume-section" id="skills" #skills>
+        <div class="resume-section-content">
+          <h2 class="mb-5">Idiomas</h2>
+          <ng-container *ngFor="let idioma of user.cv.idiomas">
+            <hr>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <h3 class="mb-0">{{idioma.idioma}}</h3>
+                <div class="subheading mb-3">{{idioma.nivel}}</div>
+              </div>
+              <div class="flex-shrink-0"><span class="text-secondary">{{idioma.certificado}}</span></div>
+            </div>
+
+
+          </ng-container>
+          <hr>
+
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Awards-->
+      <!-- <ng-container *ngIf="user.cv.certificados"> -->
+      <section class="resume-section" id="awards" #awards>
+        <div class="resume-section-content">
+          <h2 class="mb-5">Premios y certificados</h2>
+          <ul class="fa-ul mb-0">
+            <ng-container *ngFor="let certificado of user.cv.certificados">
+              <li>
+                <div class="subheading mb-3"><i class="fas fa-trophy text-warning"></i> {{certificado.certificado}} ·
+                  {{certificado.expedicion}}</div>
+              </li>
+            </ng-container>
+
+
+          </ul>
+        </div>
+      </section>
+      <!-- </ng-container> -->
+
+
+
+      <hr class="m-0" />
+      <!-- Habilities-->
+      <section class="resume-section" id="interests" #interests>
+        <div class="resume-section-content">
+          <h2 class="mb-5">Conocimientos</h2>
+          <ul class="fa-ul mb-0">
+            <ng-container *ngFor="let conocimiento of user.cv.conocimientos">
+              <li>
+                <span class="fa-li"><i class="fas fa-check text-success"></i></span>
+                {{conocimiento}}
+              </li>
+            </ng-container>
+
+          </ul>
+        </div>
+      </section>
+    </div>
+
+  </ng-container>
+   <ng-container *ngIf="!user">
+     <h3>Este usuario no existe</h3>
+   </ng-container>
+</div>

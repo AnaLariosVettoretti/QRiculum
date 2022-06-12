@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
-import { FormGroup, FormControl, FormBuilder, FormArray } from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from "@angular/forms";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
@@ -66,7 +66,7 @@ export class EditarCVComponent implements OnInit {
             this.formacionForm.controls.sobreMi.setValue(this.sobreMi);
 
 
-            if(this.user.cv.educacion!=null){
+            if (this.user.cv.educacion != null) {
               for (let i of this.user.cv.educacion) {
 
                 this.denominación = i.denominacion
@@ -75,14 +75,14 @@ export class EditarCVComponent implements OnInit {
                 this.fIni = i.fIni
                 this.fFin = i.fFin
                 this.nota = i.nota
-  
+
                 this.datosFormacion(this.denominación, this.institucion, this.descripcion, this.fIni, this.fFin, this.nota);
                 this.addDatosFormacion()
-  
+
               }
             }
-            
-            
+
+
 
 
             for (let i of this.user.cv.expLaboral) {
@@ -140,7 +140,7 @@ export class EditarCVComponent implements OnInit {
 
 
     this.formacionForm = this.fb.group({
-      sobreMi: new FormControl(this.sobreMi),
+      sobreMi: new FormControl(this.sobreMi, [Validators.required]),
       redes: this.fb.array([]),
       educacion: this.fb.array([]),
       expLaboral: this.fb.array([]),
@@ -153,51 +153,50 @@ export class EditarCVComponent implements OnInit {
 
   datosFormacion(denominación, institucion, descripcion, fIni, fFin, nota): FormGroup {
     return this.fb.group({
-      institucion: denominación,
-      denominacion: institucion,
-      descripcion: descripcion,
-      nota: nota,
-      fIni: fIni,
-      fFin: fFin
-
+      institucion: new FormControl(institucion, [Validators.required]),
+      denominacion: new FormControl(denominación, [Validators.required]),
+      descripcion: new FormControl(descripcion, [Validators.required]),
+      nota: new FormControl(nota),
+      fIni: new FormControl(fIni, [Validators.required]),
+      fFin: new FormControl(fFin)
     });
   }
 
   datosExp(empresa, cargo, descripcion, fIni, fFin): FormGroup {
     return this.fb.group({
-      empresa: empresa,
-      cargo: cargo,
-      descripcion: descripcion,
-      fIni: fIni,
-      fFin: fFin
+      empresa: new FormControl(empresa, [Validators.required]),
+      cargo: new FormControl(cargo, [Validators.required]),
+      descripcion: new FormControl(descripcion, [Validators.required]),
+      fIni: new FormControl(fIni, [Validators.required]),
+      fFin: new FormControl(fFin)
     });
   }
 
   datosIdiomas(idioma, nivel): FormGroup {
     return this.fb.group({
-      idioma: idioma,
-      nivel: nivel,
+      idioma: new FormControl(idioma, [Validators.required]),
+      nivel: new FormControl(nivel, [Validators.required]),
     });
   }
 
   datosRedes(red, usuario): FormGroup {
     return this.fb.group({
-      red: red,
-      usuario: usuario
+      red: new FormControl(red, [Validators.required]),
+      usuario: new FormControl(usuario, [Validators.required])
     });
   }
 
   datosCertificados(certificado, expedicion, fecha): FormGroup {
     return this.fb.group({
-      certificado: certificado,
-      expedicion: expedicion,
-      fecha: fecha
+      certificado: new FormControl(certificado, [Validators.required]),
+      expedicion: new FormControl(expedicion, [Validators.required]),
+      fecha: new FormControl(fecha)
     });
   }
 
   datosConocimientos(conocimiento): FormControl {
 
-    return this.fb.control(conocimiento);
+    return new FormControl(conocimiento, [Validators.required]);
   }
 
 
@@ -209,8 +208,8 @@ export class EditarCVComponent implements OnInit {
 
   newRedes(): FormGroup {
     return this.fb.group({
-      red: '',
-      usuario: ''
+      red: new FormControl('', [Validators.required]),
+      usuario: new FormControl('', [Validators.required])
     });
   }
 
@@ -230,11 +229,11 @@ export class EditarCVComponent implements OnInit {
 
   newExpLaboral(): FormGroup {
     return this.fb.group({
-      empresa: '',
-      cargo: '',
-      descripcion: '',
-      fIni: null,
-      fFin: null
+      empresa: new FormControl('', [Validators.required]),
+      cargo: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required]),
+      fIni: new FormControl('', [Validators.required]),
+      fFin: new FormControl('')
     });
   }
 
@@ -254,12 +253,12 @@ export class EditarCVComponent implements OnInit {
 
   newFormacion(): FormGroup {
     return this.fb.group({
-      institucion: '',
-      denominacion: '',
-      descripcion: '',
-      nota: null,
-      fIni: null,
-      fFin: null
+      institucion: new FormControl('', [Validators.required]),
+      denominacion: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required]),
+      nota: new FormControl(''),
+      fIni: new FormControl('', [Validators.required]),
+      fFin: new FormControl('')
     });
   }
 
@@ -298,20 +297,26 @@ export class EditarCVComponent implements OnInit {
 
 
   actualizarCV() {
-    console.log(this.formacionForm.value);
+    
+    if (this.formacionForm.valid) {
+      console.log(this.formacionForm.value);
+      this.user.cv = this.formacionForm.value
 
-    this.user.cv = this.formacionForm.value
+      console.log(this.user.cv);
+    }else{
+      console.log('mal');
+      
+    }
 
-    console.log(this.user.cv);
 
-    this.miServicio.updateCV(this.username, this.user).subscribe(data => {
+    /* this.miServicio.updateCV(this.username, this.user).subscribe(data => {
 
       Swal.fire({
         title: 'CV actualizado con éxito',
         icon: 'success'
       });
 
-    })
+    }) */
 
 
   }
@@ -325,8 +330,8 @@ export class EditarCVComponent implements OnInit {
 
   newIdiomas(): FormGroup {
     return this.fb.group({
-      idioma: '',
-      nivel: '',
+      idioma: new FormControl('', [Validators.required]),
+      nivel: new FormControl('', [Validators.required]),
     });
   }
 
@@ -346,9 +351,9 @@ export class EditarCVComponent implements OnInit {
 
   newCertificados(): FormGroup {
     return this.fb.group({
-      certificado: '',
-      expedicion: '',
-      fecha: ''
+      certificado: new FormControl('', [Validators.required]),
+      expedicion: new FormControl('', [Validators.required]),
+      fecha: new FormControl('')
     });
   }
 
@@ -367,7 +372,7 @@ export class EditarCVComponent implements OnInit {
   }
 
   newConocimiento(): FormControl {
-    return new FormControl('');
+    return new FormControl('', [Validators.required]);
   }
 
   addConocimiento() {
