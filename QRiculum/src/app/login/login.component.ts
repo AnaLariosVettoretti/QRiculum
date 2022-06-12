@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
@@ -14,36 +15,39 @@ export class LoginComponent implements OnInit {
   username: string = '';
   contrasenia: string = '';
 
-  user:any;
+  usuarioForm: any;
+  user: any;
 
   btnAcceder = () => {
 
-    this.miServicio
-    .validate(this.username, this.contrasenia)
-    .subscribe((data: any) => {
-      
-      this.user = data;
-      
-      if (this.user!=null) {
+    if (this.usuarioForm.valid) {
 
-        sessionStorage.setItem('usuario', JSON.stringify(this.user));
-        this.router.navigate(['/usuario']);
+      this.miServicio
+        .validate(this.usuarioForm.get('username').value, this.usuarioForm.get('contrasenia').value)
+        .subscribe((data: any) => {
 
-        this.miServicio.checkHeader();       
-        
-      }else{
-        console.log('mal');
-        
-      }
-      
-    });
+          this.user = data;
 
-    /* sessionStorage.setItem('usuario', JSON.stringify(user));
-    this.router.navigateByUrl('/usuario'); */
+          if (this.user != null) {
+
+            sessionStorage.setItem('usuario', JSON.stringify(this.user));
+            this.router.navigate(['/usuario']);
+
+            this.miServicio.checkHeader();
+
+          } else {
+            console.log('mal');
+          }
+
+        });
+    }
   };
 
   ngOnInit() {
-    
+    this.usuarioForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      contrasenia: new FormControl('', [Validators.required,])
+    });
   }
 
   irRegistro() {

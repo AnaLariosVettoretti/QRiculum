@@ -12,6 +12,8 @@
           <input matInput placeholder="Usuario" formControlName="usuario" (blur)="checkUsername($event)">
           <mat-icon matSuffix>alternate_email</mat-icon>
           <mat-hint>Entre 5 y 20 caracteres</mat-hint>
+          <mat-error *ngIf="hasError('usuario', 'minlength')">El mínimo son 5 caracteres</mat-error>
+          <mat-error *ngIf="hasError('usuario', 'maxlength')">El máximo son 20 caracteres</mat-error>
         </mat-form-field>
 
         <mat-icon matTooltip="My tooltip" class="col-1">info</mat-icon>
@@ -35,6 +37,11 @@
           <input matInput placeholder="Contraseña" formControlName="contrasenia" type="password">
           <mat-icon matSuffix>password</mat-icon>
           <mat-hint>Entre 5 y 20 caracteres</mat-hint>
+          <mat-error *ngIf="hasError('contrasenia', 'minlength')">El mínimo son 5 caracteres</mat-error>
+          <mat-error *ngIf="hasError('contrasenia', 'maxlength')">El máximo son 20 caracteres</mat-error>
+          <mat-error class="password-mismatch" *ngIf="registroForm?.get('contrasenia')?.controls?.confirmPassword?.hasError('mismatch')">
+            {{ 'sign-up.password-error.mismatch'}}
+          </mat-error>
         </mat-form-field>
 
       </div>
@@ -45,15 +52,16 @@
           <mat-label>Repite la contraseña</mat-label>
           <input matInput placeholder="Repite la contraseña" formControlName="contrasenia2" type="password">
           <mat-icon matSuffix>password</mat-icon>
+          <mat-error *ngIf="hasError('contrasenia', 'required')">Address is required</mat-error>
         </mat-form-field>
 
       </div>
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
-        <button mat-raised-button color="primary" class="col-5" (click)="onSubmit()">Registro</button>
+        <button mat-raised-button color="primary" class="col-5" (click)="onSubmit()" type="submit">Registro</button>
       </div>
 
-      <div class="row w-100 d-flex justify-content-center align-items-center">
+      <div class="mt-5">
         <a (click)="irLogin()" class="m-5">¿Ya tienes una cuenta? Accede</a>
       </div>
 
