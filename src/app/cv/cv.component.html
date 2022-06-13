@@ -112,7 +112,7 @@
                 <p *ngIf="educacion.nota"> Nota: {{educacion.nota}}</p>
               </div>
               <div class="flex-shrink-0"><span class="text-secondary">{{educacion.fIni}} ----
-                  <ng-container *ngIf="educacion.fFin==null">Actualidad</ng-container> {{educacion.fFin}}
+                  <ng-container *ngIf="educacion.fFin==null || educacion.fFin==''">Actualidad</ng-container> {{educacion.fFin}}
                 </span></div>
             </div>
           </ng-container>

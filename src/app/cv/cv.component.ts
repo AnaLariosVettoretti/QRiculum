@@ -18,7 +18,6 @@ export class CvComponent implements OnInit {
     const username = this.route.snapshot.queryParamMap.get('username');
 
     if (username) {
-      /* const user = this.miServicio.obtenerCVUsuario(username); */
       this.miServicio
         .getOne(username)
         .subscribe((data: any) => {

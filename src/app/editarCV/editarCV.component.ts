@@ -303,20 +303,22 @@ export class EditarCVComponent implements OnInit {
       this.user.cv = this.formacionForm.value
 
       console.log(this.user.cv);
-    }else{
-      console.log('mal');
-      
-    }
 
-
-    /* this.miServicio.updateCV(this.username, this.user).subscribe(data => {
+       this.miServicio.updateCV(this.username, this.user).subscribe(data => {
 
       Swal.fire({
         title: 'CV actualizado con éxito',
         icon: 'success'
       });
 
-    }) */
+    })
+    }else{
+      console.log('mal');
+      
+    }
+
+
+   
 
 
   }
