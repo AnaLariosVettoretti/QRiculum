@@ -50,13 +50,18 @@
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li class="nav-item mt-1 ml-5">
+        <li class="nav-item mt-2 ml-5">
           <a class="nav-link d-flex flex-column text-center" disabled='true' aria-current="page" routerLinkActive="active" [routerLink]="['usuario']" [queryParams]="{username: '{{user.usuario}}'}"><span class="small">Bienvenid@ 
-            {{usuario.nombre}}
-            <!-- Aqui iria el avatar -->
-            <img src="../../../assets/profile.png" class="rounded-circle" height="30"
-              alt="" loading="lazy" /></span></a>
+            {{usuario.nombre}} </span>
+            </a>
         </li>
+
+        <li class="nav-item ml-5">
+          <span class="nav-link d-flex flex-column text-center"><ngx-avatars name="{{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}" size="40"
+            bgColor="#6A1B9A" fgColor="white"></ngx-avatars></span>
+        </li>
+
+        
 
 
         

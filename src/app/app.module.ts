@@ -27,6 +27,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { LandingComponent } from './landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule} from '@angular/material/tooltip';
+import { AvatarModule } from 'ngx-avatars';
 
 
 
@@ -61,7 +62,8 @@ import { MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     QRCodeModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AvatarModule
   ],
 
   providers: [ServicioUsuariosService],
