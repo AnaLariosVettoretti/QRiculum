@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from "@angular/forms";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -44,11 +44,15 @@ export class EditarCVComponent implements OnInit {
 
   conocimiento: string;
 
-  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
 
-    //Coge nombre de usuario de la URL para hacer la petición al servicio y obtener el CV
+    //Obtiene de sesión el usuario
+    var usuario = sessionStorage.getItem('usuario');
+
+    if (usuario) {
+        //Coge nombre de usuario de la URL para hacer la petición al servicio y obtener el CV
     const username = this.route.snapshot.queryParamMap.get('username');
     this.username = username;
 
@@ -148,6 +152,13 @@ export class EditarCVComponent implements OnInit {
       certificados: this.fb.array([]),
       conocimientos: this.fb.array([])
     });
+    }else{
+      console.log('no hay');
+      
+      this.router.navigate(['/login']);
+    }
+
+  
   }
 
 
