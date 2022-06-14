@@ -1,4 +1,4 @@
-<div class="editarCV container mt-5 bg-light p-5 col-10 mt-5 mb-5 text-center">
+<div class="editarCV container mt-5 bg-light p-5 col-12 mt-5 mb-5 text-center">
   <form [formGroup]="formacionForm">
 
     <h3 class="mt-4 mb-4">Datos de mi CV</h3>
@@ -35,14 +35,14 @@
 
               <div class="accordion-body">
 
-                <div formArrayName="redes" class="formulario">
-                  <h3 class="mt-5">Redes sociales</h3>
+                <div formArrayName="redes" class="formulario w-100 d-flex flex-column justify-content-center align-items-center col-12">
+                  
                   <div *ngFor="let employee of redes().controls; let empIndex=index" class="formulario">
-                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                    <div [formGroupName]="empIndex" class="mt-2 row">
                       <h4>Red {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeRedes(empIndex)"><i
                             class="fa-solid fa-trash"></i></button></h4>
 
-                      <mat-form-field appearance="outline">
+                      <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Red</mat-label>
                         <mat-select formControlName="red">
                           <mat-option value="facebook">Facebook</mat-option>
@@ -53,14 +53,16 @@
                         </mat-select>
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class=" mt-1">
                         <mat-label>Nombre de usuario</mat-label>
                         <input matInput formControlName="usuario">
                       </mat-form-field>
 
                     </div>
+
+                    <hr>
                   </div>
-                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addRedes()">Añadir
+                  <button mat-raised-button color="primary" class="col-7 mt-3" (click)="addRedes()">Añadir
                     red social</button>
                 </div>
 
@@ -85,43 +87,46 @@
 
               <div class="accordion-body">
 
-                <div formArrayName="educacion" class="formulario">
+                <div formArrayName="educacion" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
                   <div *ngFor="let employee of formacion().controls; let empIndex=index" class="formulario">
-                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                    <div [formGroupName]="empIndex" class="row mt-2 text-center">
                       <h4>Formacion {{empIndex + 1}}<button class="btn btn-danger m-3"
                           (click)="removeFormacion(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Institución</mat-label>
                         <input matInput placeholder="Ej. IES Albarregas" formControlName="institucion">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Denominación</mat-label>
                         <input matInput placeholder="Ej. Grado superior de desarrollo de aplicaciones web"
                           formControlName="denominacion">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-3 m-1">
+                      <mat-form-field appearance="outline" class=" mt-1">
                         <mat-label>Nota</mat-label>
                         <input matInput type="number" formControlName="nota">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-3 m-1">
+                      <mat-form-field appearance="outline" class="col-5 mt-1 m-auto">
                         <mat-label>Fecha de inicio</mat-label>
                         <input matInput type="date" formControlName="fIni">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-3 m-1">
+                      <mat-form-field appearance="outline" class="col-5 mt-1 m-auto">
                         <mat-label>Fecha de finalización</mat-label>
                         <input matInput type="date" formControlName="fFin">
                       </mat-form-field>
 
-                      <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center"
+                    </div>
+
+                    <hr>
+
+                  </div>
+
+                  <button mat-raised-button color="primary" class="col-7"
                         (click)="addFormacion()">Añadir
                         formación</button>
-
-                    </div>
-                  </div>
 
                 </div>
 
@@ -149,41 +154,42 @@
 
 
 
-                <div formArrayName="expLaboral" class="formulario">
-                  <h3 class="mt-5">Experiencia laboral</h3>
+                <div formArrayName="expLaboral" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
+
                   <div *ngFor="let employee of expLaboral().controls; let empIndex=index" class="formulario">
-                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                    <div [formGroupName]="empIndex" class="row mt-2">
                       <h4>Experiencia {{empIndex + 1}}<button class="btn btn-danger m-3"
                           (click)="removeExpLaboral(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Empresa</mat-label>
                         <input matInput placeholder="Ej. Accenture" formControlName="empresa">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Puesto</mat-label>
                         <input matInput placeholder="Ej. Desarrollador junior Java" formControlName="cargo">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-10">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Descripción de funciones</mat-label>
                         <input matInput placeholder="Ej. Desarrollo de aplicación web" formControlName="descripcion">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="col-5 mt-1 m-auto">
                         <mat-label>Fecha de inicio</mat-label>
                         <input matInput type="date" formControlName="fIni">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class="col-5 mt-1 m-auto">
                         <mat-label>Fecha de finalización</mat-label>
                         <input matInput type="date" formControlName="fFin">
                       </mat-form-field>
 
 
                     </div>
+                    <hr>
                   </div>
-                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center"
+                  <button mat-raised-button color="primary" class="col-7 mt-3"
                     (click)="addExpLaboral()">Añadir
                     experiencia</button>
                 </div>
@@ -217,20 +223,19 @@
               <div class="accordion-body">
 
 
-                <div formArrayName="idiomas" class="formulario">
-                  <h3 class="mt-5">Idiomas</h3>
+                <div formArrayName="idiomas" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
 
                   <div *ngFor="let employee of idiomas().controls; let empIndex=index" class="formulario">
-                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                    <div [formGroupName]="empIndex" class="row mt-2">
                       <h4>Idioma {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeIdiomas(empIndex)"><i
                             class="fa-solid fa-trash"></i></button></h4>
 
-                      <mat-form-field appearance="outline" class="col-5 m-1">
+                      <mat-form-field appearance="outline" class=" mt-1">
                         <mat-label>Idioma</mat-label>
                         <input matInput placeholder="Ej. Inglés" formControlName="idioma">
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" class="m-1">
+                      <mat-form-field appearance="outline" class="mt-1">
                         <mat-label>Nivel</mat-label>
                         <mat-select formControlName="nivel">
                           <mat-option value="A1">
@@ -255,8 +260,9 @@
                       </mat-form-field>
 
                     </div>
+                    <hr>
                   </div>
-                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addIdiomas()">Añadir
+                  <button mat-raised-button color="primary" class="col-7 mt-3" (click)="addIdiomas()">Añadir
                     idioma</button>
 
                 </div>
@@ -291,31 +297,33 @@
               <div class="accordion-body">
 
 
-                <div formArrayName="certificados" class="formulario">
-                  <h3 class="mt-5">Certificados</h3>
+                <div formArrayName="certificados" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
+
                   <div *ngFor="let employee of certificados().controls; let empIndex=index" class="formulario">
-                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                    <div [formGroupName]="empIndex" class="row text-center mt-2">
                       <h4>Certificado {{empIndex + 1}}<button class="btn btn-danger m-3"
                           (click)="removeCertificados(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-                      <mat-form-field appearance="outline" class="col-8 m-3">
+                      <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Certificado</mat-label>
                         <input matInput placeholder="Ej. Professional Cloud Architect" formControlName="certificado">
                       </mat-form-field>
         
-                      <mat-form-field appearance="outline" class="col-4 m-3">
+                      <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Expedición</mat-label>
                         <input matInput placeholder="Ej. Google" formControlName="expedicion">
                       </mat-form-field>
         
-                      <mat-form-field appearance="outline" class="col-4">
+                      <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Fecha de expedición</mat-label>
                         <input matInput type="date" formControlName="fecha">
                       </mat-form-field>
         
         
                     </div>
+
+                    <hr>
                   </div>
-                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addCertificados()">Añadir
+                  <button mat-raised-button color="primary" class="col-7 mt-3" (click)="addCertificados()">Añadir
                     certificado</button>
                 </div>
 
@@ -349,21 +357,23 @@
               <div class="accordion-body">
 
 
-                <div formArrayName="conocimientos" class="formulario">
-                  <h3 class="mt-5">Conocimientos</h3>
-                  <div *ngFor="let employee of conocimientos().controls; let empIndex=index" class="formulario">
-                    <div class="tarjeta p-2 mb-3 mt-2">
+                <div formArrayName="conocimientos" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
+
+                  <div *ngFor="let employee of conocimientos().controls; let empIndex=index" class="formulario w-100 d-flex flex-column justify-content-center align-items-center">
+                    <div class="row mt-2">
                       <h4>Conocimiento {{empIndex + 1}}<button class="btn btn-danger m-3"
                           (click)="removeConocimiento(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-                      <mat-form-field appearance="outline" class="col-8 m-3">
+                      <mat-form-field appearance="outline" class="mt-3 col-12 mb-2">
                         <mat-label>Conocimiento</mat-label>
                         <input matInput placeholder="Ej. Angular, MySQL..." formControlName="{{empIndex}}">
                       </mat-form-field>
         
-        
+                      <hr>
                     </div>
+
+                    
                   </div>
-                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addConocimiento()">Añadir
+                  <button mat-raised-button color="primary" class="col-7 mt-3" (click)="addConocimiento()">Añadir
                     conocimiento</button>
                 </div>
 
@@ -391,7 +401,7 @@
 
   <hr>
 
-  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="actualizarCV()">Enviar
+  <button mat-raised-button color="primary" class="col-12 mt-3" (click)="actualizarCV()">Enviar
     información</button>
 
 </div>
