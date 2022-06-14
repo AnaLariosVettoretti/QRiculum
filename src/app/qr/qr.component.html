@@ -1,10 +1,18 @@
 <div class="qr container mt-5 p-5 col-12 mt-5 mb-5 text-center">
 
-  <h3 class="mb-5">Tu código QR personalizado</h3>
+  <div class="row mt-5 p-5">
 
-  <qr-code [value]='enlace' [size]="250" [level]="'M'"></qr-code>
+    <div class="col-md-6 col-sm-12">
+      <qr-code [value]='enlace' [size]="250" [level]="'M'"></qr-code>
+    </div>
 
-  <h4>{{user.nombre}} {{user.apellido1}} {{user.apellido2}}</h4>
-  <h4>{{user.cv.sobreMi}}</h4>
+    <div class="col-md-6 col-sm-12 d-flex align-items-center flex-column">
+      <h4 class="text-uppercase">{{user.nombre}} {{user.apellido1}} {{user.apellido2}}</h4>
+      <h4 class="mt-3 text-justify">{{user.cv.sobreMi}}</h4>
+    </div>
+  </div>
+  
+
+  
   
 </div>
