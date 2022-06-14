@@ -1,28 +1,31 @@
-<div class="login container mt-5 bg-light p-5 col-10 mt-5 text-center">
+<div class="login container mt-5 bg-light p-5 col-12 mt-5 text-center">
 
   <form [formGroup]="usuarioForm">
 
+    <div class="row text-center col-12">
       <h3>Accede</h3>
-      <mat-form-field appearance="outline" class="col-7 mt-3">
+      <mat-form-field appearance="outline" class="col-md-7 col-sm-12 mt-3 m-auto">
         <mat-label>Usuario</mat-label>
         <input matInput placeholder="Usuario" formControlName="username" name="username">
         <mat-icon matSuffix>alternate_email</mat-icon>
       </mat-form-field>
 
 
-      <mat-form-field appearance="outline" class="col-7">
+      <mat-form-field appearance="outline" class="col-md-7 col-sm-12 m-auto">
         <mat-label>Contraseña</mat-label>
         <input matInput placeholder="Contraseña" type="password" formControlName="contrasenia" name="contrasenia">
         <mat-icon matSuffix>password</mat-icon>
       </mat-form-field>
 
 
-      <button mat-raised-button color="primary" class="col-7 mt-3" (click)="btnAcceder();"
+      <button mat-raised-button color="primary" class="col-md-7 col-sm-12 mt-3 m-auto" (click)="btnAcceder();"
         type="submit">Acceder</button>
 
       <br>
-      <a (click)="irRegistro()" class="m-5">¿No tienes cuenta aún? Regístrate</a>
+      <a (click)="irRegistro()" class="mt-5 m-auto">¿No tienes cuenta aún? Regístrate</a>
 
+    </div>
+     
   </form>
 
 
