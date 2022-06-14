@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'usuario', component: UsuarioComponent },
   { path: 'editarCV', component: EditarCVComponent},
   { path: 'cv', component: CvComponent},
-  { path: 'qr', component: QrComponent},
+  { path: 'qrUsuario', component: QrComponent},
 
 ];
 
