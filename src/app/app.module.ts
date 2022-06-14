@@ -28,6 +28,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule} from '@angular/material/tooltip';
 import { AvatarModule } from 'ngx-avatars';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -63,7 +64,11 @@ import { AvatarModule } from 'ngx-avatars';
     QRCodeModule,
     HttpClientModule,
     MatTooltipModule,
-    AvatarModule
+    AvatarModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+    })
   ],
 
   providers: [ServicioUsuariosService],

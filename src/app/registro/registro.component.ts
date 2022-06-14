@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService, private route: Router, private router: Router) { }
+  constructor(private fb: FormBuilder, private miServicio: ServicioUsuariosService, private route: Router, private router: Router, private toastr: ToastrService) { }
   registroForm: any;
   checkUsuario: boolean = false;
 
@@ -28,28 +29,40 @@ export class RegistroComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.checkUsuario) {
-      console.log(this.registroForm.value);
+    const username = (<HTMLInputElement>event.target).value;
 
-      if (this.registroForm.valid) {
-        this.miServicio
-          .create(this.registroForm.value)
-          .subscribe(() => {
-
-            Swal.fire({
-              title: 'Registrado con éxito',
-              icon: 'success',
-              confirmButtonText: '¡Genial!'
-            })
-
-          });
-        sessionStorage.setItem('usuario', JSON.stringify(this.registroForm.value));
-
-        this.miServicio.checkHeader();
-
-        this.router.navigate(['/usuario']);
+    if (username != '') {
+      if (this.checkUsuario) {
+  
+        if (this.registroForm.valid) {
+          this.miServicio
+            .create(this.registroForm.value)
+            .subscribe(() => {
+  
+              Swal.fire({
+                title: 'Registrado con éxito',
+                icon: 'success',
+                confirmButtonText: '¡Genial!'
+              })
+  
+            });
+          sessionStorage.setItem('usuario', JSON.stringify(this.registroForm.value));
+  
+          this.miServicio.checkHeader();
+  
+          this.router.navigate(['/usuario']);
+        }else{
+          
+          this.toastr.error('Todos los campos deben estar completos y ser válidos');
+        }
+      }else{
+        this.toastr.error('Este nombre de usuario no está disponible')
       }
+    }else{
+      this.toastr.error('Todos los campos deben estar completos y ser válidos');
     }
+
+   
   }
 
   irLogin() {
@@ -57,7 +70,6 @@ export class RegistroComponent implements OnInit {
   }
 
   checkUsername(event: Event) {
-    console.log('entra');
 
     const username = (<HTMLInputElement>event.target).value;
 
@@ -66,14 +78,13 @@ export class RegistroComponent implements OnInit {
         .getOne(username)
         .subscribe((data: any) => {
           const usuario = data;
-          console.log(usuario);
 
           if (usuario == null) {
-            console.log('libre');
+            this.toastr.success('Usuario disponible');
             this.checkUsuario = true;
 
           } else {
-            console.log('pillado');
+            this.toastr.error('Este nombre de usuario no está disponible');
             this.checkUsuario = false;
           }
         });

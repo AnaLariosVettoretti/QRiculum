@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from "@angular/forms";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editarCV',
@@ -44,7 +45,7 @@ export class EditarCVComponent implements OnInit {
 
   conocimiento: string;
 
-  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -324,7 +325,7 @@ export class EditarCVComponent implements OnInit {
 
     })
     }else{
-      console.log('mal');
+      this.toastr.error('Todos los campos deben estar completos')
       
     }
 

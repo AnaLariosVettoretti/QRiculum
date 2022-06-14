@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private miServicio: ServicioUsuariosService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   username: string = '';
   contrasenia: string = '';
@@ -36,10 +37,14 @@ export class LoginComponent implements OnInit {
             this.miServicio.checkHeader();
 
           } else {
-            console.log('mal');
+            this.toastr.error('Credenciales incorrectas', 'Error al acceder', {
+              timeOut: 3000
+            });
           }
 
         });
+    }else{
+      this.toastr.error('Todos los campos deben estar completos')
     }
   };
 

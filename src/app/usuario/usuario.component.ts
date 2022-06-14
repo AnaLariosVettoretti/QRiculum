@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario',
@@ -15,7 +16,7 @@ export class UsuarioComponent implements OnInit {
 
   usuarioForm: any;
 
-  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
+  constructor(private miServicio: ServicioUsuariosService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private toastr: ToastrService) { }
 
   user: any;
 
@@ -62,6 +63,8 @@ export class UsuarioComponent implements OnInit {
         })
 
       })
+    }else{
+      this.toastr.error('Todos los campos deben estar completos y ser correctos')
     }
 
 
