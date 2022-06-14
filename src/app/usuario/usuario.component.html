@@ -1,62 +1,60 @@
-<div class="usuario container mt-5 bg-light p-5 col-10 mt-5 mb-5 text-center">
+<div class="usuario container mt-5 p-5 col-12 mt-5 mb-5 text-center">
 
   <h3 class="mb-3">Editar mis datos</h3>
 
   <form [formGroup]="usuarioForm">
 
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="nombre" name="nombre" required>
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="hasError('nombre', 'pattern')">Sólo se admiten letras</mat-error>
     </mat-form-field>
   
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Primer apellido</mat-label>
       <input matInput formControlName="apellido1" required name="apellido1">
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="hasError('apellido1', 'pattern')">Sólo se admiten letras</mat-error>
     </mat-form-field>
   
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Segundo apellido</mat-label>
       <input matInput formControlName="apellido2" required name="apellido2">
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="hasError('apellido2', 'pattern')">Sólo se admiten letras</mat-error>
     </mat-form-field>
   
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" required name="email">
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
   
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Teléfono 1</mat-label>
       <input matInput formControlName="telefono1" required name="telefono1">
       <mat-icon matSuffix>phone</mat-icon>
       <mat-error *ngIf="hasError('telefono1', 'pattern')">Debe tener 9 números</mat-error>
     </mat-form-field>
   
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Teléfono 2</mat-label>
       <input matInput formControlName="telefono2" required name="telefono2">
       <mat-icon matSuffix>phone</mat-icon>
       <mat-error *ngIf="hasError('telefono2', 'pattern')">Debe tener 9 números</mat-error>
     </mat-form-field>
   
-    <mat-icon matTooltip="My tooltip" class="col-1">info</mat-icon>
-  
-    <mat-form-field appearance="outline" class="col-7">
+    <mat-form-field appearance="outline" class="col-md-7 col-sm-12">
       <mat-label>Ciudad</mat-label>
       <input matInput formControlName="ciudad" required name="ciudad">
       <mat-icon matSuffix>gps_fixed</mat-icon>
     </mat-form-field>
   
-    <button mat-raised-button color="primary" class="col-7 mt-3 p-1" type="submit" (click)="guardarCambios()">Modificar
+    <button mat-raised-button color="primary" class="col-md-7 col-sm-12 mt-3 p-1" type="submit" (click)="guardarCambios()">Modificar
       cambios</button>
   
-    <button mat-raised-button color="warn" class="col-7 mt-3 p-1" type="submit" (click)="borrarCuenta()">Eliminar mi
+    <button mat-raised-button color="warn" class="col-md-7 col-sm-12 mt-3 p-1" type="submit" (click)="borrarCuenta()">Eliminar mi
       cuenta</button>
   </form>
   

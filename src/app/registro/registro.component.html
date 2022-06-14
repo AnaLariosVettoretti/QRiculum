@@ -7,7 +7,7 @@
     <form [formGroup]="registroForm">
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
-        <mat-form-field appearance="outline" class="col-7 mt-2 ">
+        <mat-form-field appearance="outline" class="col-md-7 col-sm-12 mt-2 ">
           <mat-label>Usuario</mat-label>
           <input matInput placeholder="Usuario" formControlName="usuario" (blur)="checkUsername($event)">
           <mat-icon matSuffix>alternate_email</mat-icon>
@@ -15,13 +15,11 @@
           <mat-error *ngIf="hasError('usuario', 'minlength')">El mínimo son 5 caracteres</mat-error>
           <mat-error *ngIf="hasError('usuario', 'maxlength')">El máximo son 20 caracteres</mat-error>
         </mat-form-field>
-
-        <mat-icon matTooltip="My tooltip" class="col-1">info</mat-icon>
       </div>
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
 
-        <mat-form-field appearance="outline" class="col-7">
+        <mat-form-field appearance="outline" class="col-md-7 col-sm-12 ">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Email" formControlName="email">
           <mat-icon matSuffix>email</mat-icon>
@@ -32,7 +30,7 @@
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
 
-        <mat-form-field appearance="outline" class="col-7">
+        <mat-form-field appearance="outline" class="col-md-7 col-sm-12 ">
           <mat-label>Contraseña</mat-label>
           <input matInput placeholder="Contraseña" formControlName="contrasenia" type="password">
           <mat-icon matSuffix>password</mat-icon>
@@ -48,7 +46,7 @@
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
 
-        <mat-form-field appearance="outline" class="col-7">
+        <mat-form-field appearance="outline" class="col-md-7 col-sm-12 ">
           <mat-label>Repite la contraseña</mat-label>
           <input matInput placeholder="Repite la contraseña" formControlName="contrasenia2" type="password">
           <mat-icon matSuffix>password</mat-icon>
@@ -58,11 +56,12 @@
       </div>
 
       <div class="row w-100 d-flex justify-content-center align-items-center">
-        <button mat-raised-button color="primary" class="col-5" (click)="onSubmit()" type="submit">Registro</button>
+        <button mat-raised-button color="primary" class="col-md-5 col-sm-12 " (click)="onSubmit()" type="submit">Registro</button>
       </div>
 
-      <div class="mt-5">
-        <a (click)="irLogin()" class="m-5">¿Ya tienes una cuenta? Accede</a>
+      <div class="row w-100 d-flex justify-content-center align-items-center mt-3">
+        <button mat-stroked-button color="primary" class="col-md-5 col-sm-12 " (click)="irLogin()" type="button">¿Ya tienes una cuenta? Accede</button>
+
       </div>
 
     </form>
