@@ -18,3 +18,11 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #6A1B9A;
+}
+
+
+

@@ -15,227 +15,374 @@
 
     <hr>
 
-
-    <div formArrayName="redes" class="formulario">
-      <h3 class="mt-5">Redes sociales</h3>
-      <div *ngFor="let employee of redes().controls; let empIndex=index" class="formulario">
-        <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
-          <h4>Red {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeRedes(empIndex)"><i
-                class="fa-solid fa-trash"></i></button></h4>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Red</mat-label>
-            <mat-select formControlName="red">
-              <mat-option value="facebook">Facebook</mat-option>
-              <mat-option value="linkedin">LinkedIn</mat-option>
-              <mat-option value="github">GitHub</mat-option>
-              <mat-option value="twitter">Twitter</mat-option>
-              <mat-option value="instagram">Instagram</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="col-5 m-1">
-            <mat-label>Nombre de usuario</mat-label>
-            <input matInput formControlName="usuario">
-          </mat-form-field>
-
-        </div>
-      </div>
-      <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addRedes()">Añadir
-        red social</button>
-    </div>
-
-
-
-    <hr>
-
     <div class="estudios">
-
-      <h3 style="text-align: center">Formación</h3>
 
       <div class="editarCV container mt-5 bg-light ">
 
-        <div formArrayName="educacion" class="formulario">
-          <div *ngFor="let employee of formacion().controls; let empIndex=index" class="formulario">
-            <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
-              <h4>Formacion {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeFormacion(empIndex)"><i
-                    class="fa-solid fa-trash"></i></button></h4>
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Institución</mat-label>
-                <input matInput placeholder="Ej. IES Albarregas" formControlName="institucion">
-              </mat-form-field>
+        <div class="accordion" id="accordionExample">
 
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Denominación</mat-label>
-                <input matInput placeholder="Ej. Grado superior de desarrollo de aplicaciones web"
-                  formControlName="denominacion">
-              </mat-form-field>
+          <div class="accordion-item">
 
-              <mat-form-field appearance="outline" class="col-10 m-1">
-                <mat-label>Descripcion</mat-label>
-                <input matInput placeholder="Ej. Formación en Java, JavaScript, MySQL..."
-                  formControlName="descripcion">
-              </mat-form-field>
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="false" aria-controls="collapseOne">
+                Redes sociales
+              </button>
+            </h2>
 
-              <mat-form-field appearance="outline" class="col-3 m-1">
-                <mat-label>Nota</mat-label>
-                <input matInput type="number" formControlName="nota">
-              </mat-form-field>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
 
-              <mat-form-field appearance="outline" class="col-3 m-1">
-                <mat-label>Fecha de inicio</mat-label>
-                <input matInput type="date" formControlName="fIni">
-              </mat-form-field>
+              <div class="accordion-body">
 
-              <mat-form-field appearance="outline" class="col-3 m-1">
-                <mat-label>Fecha de finalización</mat-label>
-                <input matInput type="date" formControlName="fFin">
-              </mat-form-field>
+                <div formArrayName="redes" class="formulario">
+                  <h3 class="mt-5">Redes sociales</h3>
+                  <div *ngFor="let employee of redes().controls; let empIndex=index" class="formulario">
+                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Red {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeRedes(empIndex)"><i
+                            class="fa-solid fa-trash"></i></button></h4>
 
-            </div>
-          </div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Red</mat-label>
+                        <mat-select formControlName="red">
+                          <mat-option value="facebook">Facebook</mat-option>
+                          <mat-option value="linkedin">LinkedIn</mat-option>
+                          <mat-option value="github">GitHub</mat-option>
+                          <mat-option value="twitter">Twitter</mat-option>
+                          <mat-option value="instagram">Instagram</mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addFormacion()">Añadir
-            formación</button>
-        </div>
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Nombre de usuario</mat-label>
+                        <input matInput formControlName="usuario">
+                      </mat-form-field>
 
-        <hr>
+                    </div>
+                  </div>
+                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addRedes()">Añadir
+                    red social</button>
+                </div>
 
-        <div formArrayName="expLaboral" class="formulario">
-          <h3 class="mt-5">Experiencia laboral</h3>
-          <div *ngFor="let employee of expLaboral().controls; let empIndex=index" class="formulario">
-            <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
-              <h4>Experiencia {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeExpLaboral(empIndex)"><i
-                    class="fa-solid fa-trash"></i></button></h4>
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Empresa</mat-label>
-                <input matInput placeholder="Ej. Accenture" formControlName="empresa">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Puesto</mat-label>
-                <input matInput placeholder="Ej. Desarrollador junior Java" formControlName="cargo">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="col-10">
-                <mat-label>Descripción de funciones</mat-label>
-                <input matInput placeholder="Ej. Desarrollo de aplicación web" formControlName="descripcion">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Fecha de inicio</mat-label>
-                <input matInput type="date" formControlName="fIni">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Fecha de finalización</mat-label>
-                <input matInput type="date" formControlName="fFin">
-              </mat-form-field>
-
+              </div>
 
             </div>
           </div>
-          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addExpLaboral()">Añadir
-            experiencia</button>
-        </div>
 
-        <hr>
+          <hr>
 
-        <div formArrayName="idiomas" class="formulario">
-          <h3 class="mt-5">Idiomas</h3>
+          <div class="accordion-item">
 
-          <div *ngFor="let employee of idiomas().controls; let empIndex=index" class="formulario">
-            <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
-              <h4>Idioma {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeIdiomas(empIndex)"><i
-                    class="fa-solid fa-trash"></i></button></h4>
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Formación académica
+              </button>
+            </h2>
 
-              <mat-form-field appearance="outline" class="col-5 m-1">
-                <mat-label>Idioma</mat-label>
-                <input matInput placeholder="Ej. Inglés" formControlName="idioma">
-              </mat-form-field>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
 
-              <mat-form-field appearance="outline" class="m-1">
-                <mat-label>Nivel</mat-label>
-                <mat-select formControlName="nivel">
-                  <mat-option value="A1">
-                    A1
-                  </mat-option>
-                  <mat-option value="A2">
-                    A2
-                  </mat-option>
-                  <mat-option value="B1">
-                    B1
-                  </mat-option>
-                  <mat-option value="B2">
-                    B2
-                  </mat-option>
-                  <mat-option value="C1">
-                    C1
-                  </mat-option>
-                  <mat-option value="C2">
-                    C2
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <div class="accordion-body">
 
+                <div formArrayName="educacion" class="formulario">
+                  <div *ngFor="let employee of formacion().controls; let empIndex=index" class="formulario">
+                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Formacion {{empIndex + 1}}<button class="btn btn-danger m-3"
+                          (click)="removeFormacion(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Institución</mat-label>
+                        <input matInput placeholder="Ej. IES Albarregas" formControlName="institucion">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Denominación</mat-label>
+                        <input matInput placeholder="Ej. Grado superior de desarrollo de aplicaciones web"
+                          formControlName="denominacion">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-3 m-1">
+                        <mat-label>Nota</mat-label>
+                        <input matInput type="number" formControlName="nota">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-3 m-1">
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput type="date" formControlName="fIni">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-3 m-1">
+                        <mat-label>Fecha de finalización</mat-label>
+                        <input matInput type="date" formControlName="fFin">
+                      </mat-form-field>
+
+                      <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center"
+                        (click)="addFormacion()">Añadir
+                        formación</button>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
             </div>
+
+
           </div>
-          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addIdiomas()">Añadir
-            idioma</button>
 
-        </div>
+          <hr>
 
-        <hr>
+          <div class="accordion-item">
 
-        <div formArrayName="certificados" class="formulario">
-          <h3 class="mt-5">Certificados</h3>
-          <div *ngFor="let employee of certificados().controls; let empIndex=index" class="formulario">
-            <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
-              <h4>Certificado {{empIndex + 1}}<button class="btn btn-danger m-3"
-                  (click)="removeCertificados(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-              <mat-form-field appearance="outline" class="col-8 m-3">
-                <mat-label>Certificado</mat-label>
-                <input matInput placeholder="Ej. Professional Cloud Architect" formControlName="certificado">
-              </mat-form-field>
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                aria-expanded="false" aria-controls="collapseThree">
+                Experiencia laboral
+              </button>
+            </h2>
 
-              <mat-form-field appearance="outline" class="col-4 m-3">
-                <mat-label>Expedición</mat-label>
-                <input matInput placeholder="Ej. Google" formControlName="expedicion">
-              </mat-form-field>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
 
-              <mat-form-field appearance="outline" class="col-4">
-                <mat-label>Fecha de expedición</mat-label>
-                <input matInput type="date" formControlName="fecha">
-              </mat-form-field>
+              <div class="accordion-body">
 
 
+
+                <div formArrayName="expLaboral" class="formulario">
+                  <h3 class="mt-5">Experiencia laboral</h3>
+                  <div *ngFor="let employee of expLaboral().controls; let empIndex=index" class="formulario">
+                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Experiencia {{empIndex + 1}}<button class="btn btn-danger m-3"
+                          (click)="removeExpLaboral(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Empresa</mat-label>
+                        <input matInput placeholder="Ej. Accenture" formControlName="empresa">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Puesto</mat-label>
+                        <input matInput placeholder="Ej. Desarrollador junior Java" formControlName="cargo">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-10">
+                        <mat-label>Descripción de funciones</mat-label>
+                        <input matInput placeholder="Ej. Desarrollo de aplicación web" formControlName="descripcion">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput type="date" formControlName="fIni">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Fecha de finalización</mat-label>
+                        <input matInput type="date" formControlName="fFin">
+                      </mat-form-field>
+
+
+                    </div>
+                  </div>
+                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center"
+                    (click)="addExpLaboral()">Añadir
+                    experiencia</button>
+                </div>
+
+
+
+
+              </div>
             </div>
-          </div>
-          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addCertificados()">Añadir
-            certificado</button>
-        </div>
 
 
-        <hr>
 
 
-        <div formArrayName="conocimientos" class="formulario">
-          <h3 class="mt-5">Conocimientos</h3>
-          <div *ngFor="let employee of conocimientos().controls; let empIndex=index" class="formulario">
-            <div class="tarjeta p-2 mb-3 mt-2">
-              <h4>Conocimiento {{empIndex + 1}}<button class="btn btn-danger m-3"
-                  (click)="removeConocimiento(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
-              <mat-form-field appearance="outline" class="col-8 m-3">
-                <mat-label>Conocimiento</mat-label>
-                <input matInput placeholder="Ej. Angular, MySQL..." formControlName="{{empIndex}}">
-              </mat-form-field>
+
+          </div> <!-- item -->
+
+          <hr>
+
+          <div class="accordion-item">
+
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                aria-expanded="false" aria-controls="collapseFour">
+                Idiomas
+              </button>
+            </h2>
+
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample">
+
+              <div class="accordion-body">
 
 
+                <div formArrayName="idiomas" class="formulario">
+                  <h3 class="mt-5">Idiomas</h3>
+
+                  <div *ngFor="let employee of idiomas().controls; let empIndex=index" class="formulario">
+                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Idioma {{empIndex + 1}}<button class="btn btn-danger m-3" (click)="removeIdiomas(empIndex)"><i
+                            class="fa-solid fa-trash"></i></button></h4>
+
+                      <mat-form-field appearance="outline" class="col-5 m-1">
+                        <mat-label>Idioma</mat-label>
+                        <input matInput placeholder="Ej. Inglés" formControlName="idioma">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="m-1">
+                        <mat-label>Nivel</mat-label>
+                        <mat-select formControlName="nivel">
+                          <mat-option value="A1">
+                            A1
+                          </mat-option>
+                          <mat-option value="A2">
+                            A2
+                          </mat-option>
+                          <mat-option value="B1">
+                            B1
+                          </mat-option>
+                          <mat-option value="B2">
+                            B2
+                          </mat-option>
+                          <mat-option value="C1">
+                            C1
+                          </mat-option>
+                          <mat-option value="C2">
+                            C2
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addIdiomas()">Añadir
+                    idioma</button>
+
+                </div>
+
+
+
+
+
+              </div>
             </div>
-          </div>
-          <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addConocimiento()">Añadir
-            conocimiento</button>
-        </div>
+
+
+
+
+
+          </div> <!-- item -->
+
+          <hr>
+
+          <div class="accordion-item">
+
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                aria-expanded="false" aria-controls="collapseFive">
+                Certificados
+              </button>
+            </h2>
+
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+              data-bs-parent="#accordionExample">
+
+              <div class="accordion-body">
+
+
+                <div formArrayName="certificados" class="formulario">
+                  <h3 class="mt-5">Certificados</h3>
+                  <div *ngFor="let employee of certificados().controls; let empIndex=index" class="formulario">
+                    <div [formGroupName]="empIndex" class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Certificado {{empIndex + 1}}<button class="btn btn-danger m-3"
+                          (click)="removeCertificados(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
+                      <mat-form-field appearance="outline" class="col-8 m-3">
+                        <mat-label>Certificado</mat-label>
+                        <input matInput placeholder="Ej. Professional Cloud Architect" formControlName="certificado">
+                      </mat-form-field>
+        
+                      <mat-form-field appearance="outline" class="col-4 m-3">
+                        <mat-label>Expedición</mat-label>
+                        <input matInput placeholder="Ej. Google" formControlName="expedicion">
+                      </mat-form-field>
+        
+                      <mat-form-field appearance="outline" class="col-4">
+                        <mat-label>Fecha de expedición</mat-label>
+                        <input matInput type="date" formControlName="fecha">
+                      </mat-form-field>
+        
+        
+                    </div>
+                  </div>
+                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addCertificados()">Añadir
+                    certificado</button>
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+          </div> <!-- item -->
+
+          <hr>
+
+          <div class="accordion-item">
+
+            <h2 class="accordion-header" id="headingSix">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                aria-expanded="false" aria-controls="collapseSix">
+                Conocimientos
+              </button>
+            </h2>
+
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+              data-bs-parent="#accordionExample">
+
+              <div class="accordion-body">
+
+
+                <div formArrayName="conocimientos" class="formulario">
+                  <h3 class="mt-5">Conocimientos</h3>
+                  <div *ngFor="let employee of conocimientos().controls; let empIndex=index" class="formulario">
+                    <div class="tarjeta p-2 mb-3 mt-2">
+                      <h4>Conocimiento {{empIndex + 1}}<button class="btn btn-danger m-3"
+                          (click)="removeConocimiento(empIndex)"><i class="fa-solid fa-trash"></i></button></h4>
+                      <mat-form-field appearance="outline" class="col-8 m-3">
+                        <mat-label>Conocimiento</mat-label>
+                        <input matInput placeholder="Ej. Angular, MySQL..." formControlName="{{empIndex}}">
+                      </mat-form-field>
+        
+        
+                    </div>
+                  </div>
+                  <button mat-raised-button color="primary" class="col-7 mt-3 mb-3 center" (click)="addConocimiento()">Añadir
+                    conocimiento</button>
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+          </div> <!-- item -->
+
+
+
+        </div> <!-- acordeon -->      
 
 
       </div>
