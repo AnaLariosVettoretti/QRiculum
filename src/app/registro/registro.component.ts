@@ -28,12 +28,11 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit() {
-
-    const username = (<HTMLInputElement>event.target).value;
-
-    if (username != '') {
+    
       if (this.checkUsuario) {
   
+        console.log(this.registroForm.valid);
+        
         if (this.registroForm.valid) {
           this.miServicio
             .create(this.registroForm.value)
@@ -58,9 +57,7 @@ export class RegistroComponent implements OnInit {
       }else{
         this.toastr.error('Este nombre de usuario no está disponible')
       }
-    }else{
-      this.toastr.error('Todos los campos deben estar completos y ser válidos');
-    }
+    
 
    
   }
