@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicioUsuariosService } from 'src/app/servicio-usuarios.service';
 
@@ -8,11 +8,25 @@ import { ServicioUsuariosService } from 'src/app/servicio-usuarios.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
 
   @Input() nombreUsuario: string | undefined;
 
   constructor(private router: Router, private miServicio: ServicioUsuariosService) { }
+  ngDoCheck(): void {
+    
+    var user = sessionStorage.getItem('usuario');
+
+    if (user) {
+      console.log('user '+ user);
+      
+      this.usuario = JSON.parse(user)
+    }
+
+    this.miServicio.showHeader$?.subscribe(e => {
+      (this.showHeader = e)
+    });
+  }
 
   usuario: any;
   showHeader: boolean;
@@ -25,14 +39,6 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-
-    const user = sessionStorage.getItem('usuario');
-
-    if (user) {
-      this.usuario = JSON.parse(user);
-    }
-
-    this.miServicio.showHeader$?.subscribe(e => (this.showHeader = e));
 
   }
 
