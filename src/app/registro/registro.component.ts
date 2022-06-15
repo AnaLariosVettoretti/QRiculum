@@ -50,6 +50,9 @@ export class RegistroComponent implements OnInit {
           this.miServicio.checkHeader();
   
           this.router.navigate(['/usuario']);
+
+          this.toastr.info('Completa tus datos en datos de usuario');
+          this.toastr.info('Completa tu cv');
         }else{
           
           this.toastr.error('Todos los campos deben estar completos y ser válidos');
