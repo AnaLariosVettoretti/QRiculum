@@ -75,16 +75,12 @@ export class UsuarioComponent implements OnInit {
     Swal.fire({
       title: '¿Quieres eliminar tu cuenta? Esta acción es irreversible',
       icon: 'warning',
-      showDenyButton: true,
-      confirmButtonText: 'Cancelar',
-      denyButtonText: `Eliminar mi cuenta`,
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar mi cuenta',
+      cancelButtonText: `Cancelar`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        console.log('cancelado');
-
-      } else if (result.isDenied) {
-
         this.miServicio.delete(this.user.usuario).subscribe(data => {
 
           sessionStorage.clear();
@@ -97,6 +93,7 @@ export class UsuarioComponent implements OnInit {
 
           this.router.navigate(['']);
         })
+
       }
     })
 
