@@ -35,9 +35,9 @@ export class UsuarioComponent implements OnInit {
     this.usuarioForm = this.fb.group({
       usuario: this.user.usuario,
       contrasenia: this.user.contrasenia,
-      nombre: new FormControl(this.user.nombre, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
-      apellido1: new FormControl(this.user.apellido1, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
-      apellido2: new FormControl(this.user.apellido2, [Validators.required, Validators.pattern('[a-zA-Z ]{1,254}')]),
+      nombre: new FormControl(this.user.nombre, [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      apellido1: new FormControl(this.user.apellido1, [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      apellido2: new FormControl(this.user.apellido2, [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
       email: new FormControl(this.user.email, [Validators.required]),
       telefono1: new FormControl(this.user.telefono1, [Validators.required, Validators.pattern('[0-9]{9}$')]),
       telefono2: new FormControl(this.user.telefono2, [Validators.required, Validators.pattern('[0-9]{9}$')]),
